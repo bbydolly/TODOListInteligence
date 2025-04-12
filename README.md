@@ -30,4 +30,4 @@
 
 ## Verificación final
 - Ejecuté el emulador para corroborar que podía interactuar con él.
-![Preview TODO List Inteligence](Preview_Images/TODOListInteligence.JPG)
+![Preview TODO List Inteligence](Resources/Images/TODOListInteligence.JPG)
