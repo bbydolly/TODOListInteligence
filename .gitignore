@@ -1,0 +1,12 @@
+# Archivos y carpetas generados automáticamente
+bin/
+obj/
+.vs/
+*.user
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuraciones específicas del entorno
+appsettings.json
