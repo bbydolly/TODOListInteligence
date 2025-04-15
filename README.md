@@ -1,4 +1,4 @@
-# Registro de configuraci�n del proyecto .NET MAUI
+# Registro de configuracion del proyecto .NET MAUI
 
 ## Fecha
 **12/4/2025**
