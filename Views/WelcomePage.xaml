@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels" 
+    x:Class="TODOListInteligence.Views.WelcomePage"
+    Title="WelcomePage">
+
+    <!-- Define de dónde sacaremos los datos para esta página (el ViewModel) -->
+    <ContentPage.BindingContext>
+        <viewmodel:WelcomePageViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <!-- Muestra el texto de bienvenida.  El texto viene de la propiedad "WelcomeText" del ViewModel -->
+        <Label 
+            Text="{Binding WelcomeText}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <!-- Botón para ir a la página de crear cuenta. Al pulsarlo, se ejecuta el comando "CreateAccountCommand" del ViewModel -->
+        <Button 
+            Text="Crear Cuenta"
+            Command="{Binding CreateAccountCommand}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+
+        <!-- Botón para ir a la página de inicio de sesión. Al pulsarlo, se ejecuta el comando "LoginCommand" del ViewModel -->
+        <Button 
+            Text="Iniciar Sesión"
+            Command="{Binding LoginCommand}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

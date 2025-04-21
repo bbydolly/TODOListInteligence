@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels"
+             x:Class="TODOListInteligence.Views.StartOptionsPage"
+             Title="Opciones de Inicio">
+
+    <ContentPage.BindingContext>
+        <viewmodel:StartOptionsPageViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20">
+
+        <Button
+            Text="Crear Cuenta"
+            Clicked="OnCrearCuentaClicked"
+            HorizontalOptions="Center" />
+
+        <Button
+            Text="Iniciar Sesión"
+            Clicked="OnIniciarSesionClicked"
+            HorizontalOptions="Center" />
+        <!--Clicked me enlaza el evento click de cada botón a un método
+        en el code-behind (en su StartOptionsPageViewModel.cs enlazada)-->
+
+    </VerticalStackLayout>
+
+</ContentPage>

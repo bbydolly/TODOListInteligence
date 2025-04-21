@@ -1,0 +1,42 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TODOListInteligence.Views.LoginPage"
+             xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels"
+             Title="LoginPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:LoginPageViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <VerticalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="20"
+            WidthRequest="300">
+
+            <Label 
+                Text="Bienvenido de nuevo"
+                FontSize="24"
+                HorizontalOptions="Center" />
+
+            <Entry
+                Placeholder="Email"
+                Keyboard="Email"
+                x:Name="EmailEntry" />
+            <!-- Agregamos x:Name para acceder al control desde el code-behind -->
+
+            <Entry
+                Placeholder="Contraseña"
+                IsPassword="True"
+                x:Name="PasswordEntry" />
+            <!-- Agregamos x:Name para acceder al control desde el code-behind -->
+
+            <Button 
+                Text="Entrar"
+                HorizontalOptions="Center"
+                Clicked="OnEntrarClicked" />
+            <!-- Agregamos el evento Clicked -->
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
