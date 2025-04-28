@@ -10,6 +10,16 @@ namespace TODOListInteligence.Views
             InitializeComponent();
         }
 
-        // Tu código aquí
+       private async void OnCreateAccount(object sender, EventArgs e)
+        {
+            // TODO
+            // 0. Comprobar que el usuario no exista 
+            // 1. Validar los datos del usuario
+            // 2. Crear objeto user
+            // 3. Guardarlo en una base de datos ligera
+            
+            await Navigation.PushAsync(new ThemeConfigurationPage());
+
+        }
     }
 }

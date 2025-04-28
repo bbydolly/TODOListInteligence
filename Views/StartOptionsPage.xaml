@@ -16,12 +16,12 @@
 
         <Button
             Text="Crear Cuenta"
-            Clicked="OnCrearCuentaClicked"
+            Clicked="OnCreateAccount"
             HorizontalOptions="Center" />
 
         <Button
             Text="Iniciar Sesión"
-            Clicked="OnIniciarSesionClicked"
+            Clicked="OnInitSession"
             HorizontalOptions="Center" />
         <!--Clicked me enlaza el evento click de cada botón a un método
         en el code-behind (en su StartOptionsPageViewModel.cs enlazada)-->

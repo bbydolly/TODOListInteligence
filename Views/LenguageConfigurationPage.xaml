@@ -5,8 +5,35 @@
              Title="LenguageConfigurationPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Configuración de idioma"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <HorizontalStackLayout  HorizontalOptions="Center" 
+         VerticalOptions="Center" 
+         Spacing="40"
+         Grid.Row="1">
+
+            <!--TODO cambiar las imagenes-->
+            <Image Source="todo_list_inteligence.JPG" HeightRequest="290" WidthRequest="290"/>
+
+            <Image Source="todo_list_inteligence.JPG" HeightRequest="290" WidthRequest="290"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout 
+         HorizontalOptions="Center" 
+         VerticalOptions="Start" 
+         Spacing="40"
+         Grid.Row="2">
+
+            <RadioButton Content="Inglés" GroupName="temas" />
+            <RadioButton Content="Español" GroupName="temas" />
+
+        </HorizontalStackLayout>
+
+        <Button
+         Text="Guardar configuración idioma"
+         Clicked="OnSaveConfiguration"
+         HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

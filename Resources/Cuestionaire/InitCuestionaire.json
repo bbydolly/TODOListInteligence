@@ -1,0 +1,62 @@
+﻿[
+  {
+    "Id": 1,
+    "Text": "¿Qué área de tu vida consideras más importante?",
+    "Options": [ "Familia", "Trabajo", "Salud", "Amigos", "Ocio" ]
+  },
+  {
+    "Id": 2,
+    "Text": "¿En cuál de estas áreas sientes más presión por el tiempo?",
+    "Options": [ "Trabajo", "Familia", "Salud", "Ocio" ]
+  },
+  {
+    "Id": 3,
+    "Text": "¿Qué actividades te generan más satisfacción personal?",
+    "Options": [ "Tiempo con la familia", "Logros profesionales", "Cuidar tu salud", "Aprender cosas nuevas" ]
+  },
+  {
+    "Id": 4,
+    "Text": "¿Qué sueles posponer más a menudo?",
+    "Options": [ "Citas médicas", "Reuniones familiares", "Proyectos laborales", "Tiempo para ti" ]
+  },
+  {
+    "Id": 5,
+    "Text": "¿Qué te resulta más difícil rechazar?",
+    "Options": [ "Peticiones de la familia", "Urgencias del trabajo", "Invitaciones de amigos", "Actividades de ocio" ]
+  },
+  {
+    "Id": 6,
+    "Text": "¿Qué te gustaría priorizar más en tu día a día?",
+    "Options": [ "Salud", "Familia", "Trabajo", "Ocio" ]
+  },
+  {
+    "Id": 7,
+    "Text": "¿Qué actividad te produce más estrés si no la realizas a tiempo?",
+    "Options": [ "Entregas laborales", "Citas familiares", "Revisiones médicas", "Actividades sociales" ]
+  },
+  {
+    "Id": 8,
+    "Text": "¿En qué área sientes que deberías invertir más tiempo?",
+    "Options": [ "Familia", "Trabajo", "Salud", "Ocio" ]
+  },
+  {
+    "Id": 9,
+    "Text": "¿Qué tipo de tareas sueles atender primero?",
+    "Options": [ "Las urgentes", "Las importantes", "Las que me gustan", "Las que me piden otros" ]
+  },
+  {
+    "Id": 10,
+    "Text": "¿Qué actividad te resulta más fácil dejar para después?",
+    "Options": [ "Ejercicio físico", "Reuniones de trabajo", "Tiempo con amigos", "Estudio personal" ]
+  },
+  {
+    "Id": 11,
+    "Text": "¿Qué área consideras menos prioritaria en tu vida?",
+    "Options": [ "Ocio", "Trabajo", "Familia", "Salud" ]
+  },
+  {
+    "Id": 12,
+    "Text": "¿En qué área te gustaría mejorar tu organización?",
+    "Options": [ "Trabajo", "Familia", "Salud", "Ocio" ]
+  }
+]

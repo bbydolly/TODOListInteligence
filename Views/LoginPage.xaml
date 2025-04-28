@@ -34,8 +34,8 @@
 
             <Button 
                 Text="Entrar"
-                HorizontalOptions="Center"
-                Clicked="OnEntrarClicked" />
+                Clicked="OnCreateAccount"
+                HorizontalOptions="Center" />
             <!-- Agregamos el evento Clicked -->
         </VerticalStackLayout>
     </Grid>

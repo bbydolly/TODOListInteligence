@@ -6,7 +6,9 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
+            //Cargo la primera vista al ejecutar mi programa
+            MainPage = new NavigationPage(new Views.WelcomePage());
         }
     }
 }

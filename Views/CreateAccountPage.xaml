@@ -13,19 +13,43 @@
         VerticalOptions="Center"
         HorizontalOptions="Center"
         Spacing="20">
+        <Entry
+            Placeholder="Nombre"
+            HorizontalOptions="Center"
+            WidthRequest="250"/>
 
-        <!--spacio entre los botones
-        Command es una propiedad que se usa para enlazar un control. busca su contenido en el 
-        archivo enlazado en xmlns:viewmodel, se relaciona con el tipo ICommand en el .cs -->
+        <Entry
+            Placeholder="Email"
+            Keyboard="Email"
+            HorizontalOptions="Center"
+            WidthRequest="250"/>
+
+        <Entry
+            Placeholder="Contraseña"
+           IsPassword="True"
+            HorizontalOptions="Center"
+            WidthRequest="250"/>    
+
+        <!--Clicked enlaza una función definida en el code-behind-->
         <Button
             Text="Crear cuenta"
-            Command="{Binding CrearCuentaCommand}"
+            Clicked="CreateAccount"
             HorizontalOptions="Center" />
 
-        <Button
-            Text="Iniciar sesión"
-            Command="{Binding IniciarSesionCommand}"
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+            <Label 
+                Text="¿Ya tienes cuenta?" 
+                VerticalOptions="Center"/>
+            <Label 
+                Text="Iniciar sesión"
+                TextColor="Blue"
+                TextDecorations="Underline"
+                VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="InitSession"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
 
     </VerticalStackLayout>
 

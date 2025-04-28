@@ -2,34 +2,61 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels" 
+    xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels"
+    xmlns:strings="clr-namespace:TODOListInteligence.Resources.Strings"
     x:Class="TODOListInteligence.Views.WelcomePage"
-    Title="WelcomePage">
-
+    Title="{x:Static strings:AppResources.WelcomePageTitle}">
     <!-- Define de dónde sacaremos los datos para esta página (el ViewModel) -->
     <ContentPage.BindingContext>
         <viewmodel:WelcomePageViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout>
-        <!-- Muestra el texto de bienvenida.  El texto viene de la propiedad "WelcomeText" del ViewModel -->
-        <Label 
-            Text="{Binding WelcomeText}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid
+        ColumnDefinitions="*"
+        RowDefinitions="Auto,Auto,*,Auto"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
 
-        <!-- Botón para ir a la página de crear cuenta. Al pulsarlo, se ejecuta el comando "CreateAccountCommand" del ViewModel -->
-        <Button 
-            Text="Crear Cuenta"
-            Command="{Binding CreateAccountCommand}"
+        
+        <!-- Texto centrado -->
+        <Label
+           Text="{x:Static strings:AppResources.LabelTextWelcome}"
+            FontSize="32"
             HorizontalOptions="Center"
-            VerticalOptions="Center"/>
+            VerticalOptions="Center"
+            Grid.Row="0"/>
 
-        <!-- Botón para ir a la página de inicio de sesión. Al pulsarlo, se ejecuta el comando "LoginCommand" del ViewModel -->
-        <Button 
-            Text="Iniciar Sesión"
-            Command="{Binding LoginCommand}"
+        <!-- Imagen centrada -->
+        <Image
+            Source="dotnet_bot.png"
+            HeightRequest="200"
             HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-    </VerticalStackLayout>
+            VerticalOptions="Center"
+            Grid.Row="1"/>
+
+        <!-- Espaciador para empujar los botones hacia abajo -->
+        <BoxView  Grid.Row="2"/>
+
+        <!-- Contenedor Horizontal para los botones -->
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Spacing="20"
+            Grid.Row="3">
+
+            <!-- Botón "Empezar Ahora" -->
+            <Button
+                Text="Empezar Ahora"
+                Clicked="OnStartNowClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <!-- Botón "Iniciar Sesión" -->
+            <!--<Button
+                Text="Iniciar Sesión"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>-->
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
