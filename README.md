@@ -193,6 +193,85 @@ public class LoginPageViewModel // Sin herencia de ContentPage
 - Pendiente de arreglar más errores que ocurren en la ejecución para poder avanzar en el desarrollo del proyecto
 
 
+## Actualización 26-27/4/2025
+
+### Cambio de enfoque y avances en el desarrollo
+
+Durante este fin de semana se ha producido un cambio fundamental en la estrategia del proyecto:
+
+- **Abandono de Grial UI Kit:** Tras evaluar las dificultades y limitaciones de las plantillas de Grial, se decidió dejar de usarlas y desarrollar manualmente las vistas y su lógica asociada. Esto permite mayor flexibilidad y control sobre la experiencia de usuario y la arquitectura del proyecto.
+
+### Vistas desarrolladas y navegación
+
+Actualmente, el flujo de navegación entre páginas es funcional y se han creado las siguientes vistas, que ya interactúan correctamente entre sí:
+
+- `WelcomePage`
+- `StartOptionPage`
+- `CreateAccountPage`
+- `LoginPage`
+- `ThemeConfigurationPage`
+- `LanguageConfigurationPage`
+
+Se está trabajando en la vista `InitialConfigurationPage`.
+
+> **Nota:** Las imágenes utilizadas en las vistas de configuración de tema e idioma son provisionales y de pruebas. El diseño visual definitivo se abordará en fases posteriores, priorizando ahora la navegación y la interacción entre páginas.
+
+Se han diseñado vistas futuras para:
+- Añadir tareas.
+- Visualizar cada uno de los cuatro cuadrantes de la matriz Eisenhower.
+- Vista detallada de tareas por cuadrante, con posibilidad de agregar nuevas tareas.
+- Perfil de usuario para modificar la configuración y mostrar datos personales.
+
+Además, se está valorando el uso de **SQLite para la persistencia local** de datos.
+
+### Internacionalización
+
+- Se han creado **dos archivos de recursos de strings** para soportar los idiomas español e inglés, permitiendo la traducción de la interfaz y facilitando la futura ampliación a otros idiomas.
+- Actualmente se está trabajando en **referenciar dinámicamente los strings** para que, tras cargar el idioma seleccionado por el usuario, las cadenas de texto de la interfaz se muestren en el idioma elegido.
+
+### Navegación entre páginas
+
+- La navegación entre páginas está basada en **`Navigation.PushAsync`** y se activa mediante el evento **`Clicked`** directamente desde XAML, en lugar de utilizar Shell.
+
+### Diseño y desarrollo del algoritmo de clasificación
+
+El algoritmo de clasificación de tareas basado en la matriz Eisenhower está en fase de diseño, con un enfoque claro hacia una solución sencilla y eficiente:
+
+- Se utilizarán dos colecciones de preguntas, una para aspectos relacionados con la urgencia y otra para la importancia.
+- Cada pregunta está asociada a un conjunto de palabras clave vinculadas a las tareas.
+- Se realizará una suma total de puntos basada en las respuestas, para clasificar las tareas en los cuadrantes de la matriz.
+- Se usará un diccionario de palabras clave para relacionar tareas con preguntas y calcular las puntuaciones.
+
+### Clases principales creadas
+
+- `Question`: representa cada pregunta del cuestionario inicial.
+- `User`: modelo que contiene información del usuario.
+- `UserAnswer`: almacena las respuestas del usuario a cada pregunta.
+
+### Gestión del cuestionario y reutilización de vistas
+
+- Actualmente se está trabajando en la configuración de la lógica para reutilizar una única vista que irá mostrando las preguntas del cuestionario inicial una a una, gestionando la navegación y el flujo desde el ViewModel. Esto permitirá mantener una interfaz limpia y flexible, facilitando futuras ampliaciones o modificaciones del cuestionario.
+- El cuestionario está definido en formato JSON, permitiendo fácil modificación y extensión sin necesidad de cambiar el código fuente.
+
+### Problemas resueltos
+
+- Corrección de errores de binding y navegación entre vistas, asegurando que la interacción mediante botones y eventos en code-behind funcione correctamente.
+- Ajuste de la estructura del proyecto para separar claramente las carpetas de `Views`, `ViewModels` y `Models`.
+- Corrección de herencias incorrectas en los ViewModels, eliminando herencias de clases UI para cumplir con el patrón MVVM.
+
+### Próximos pasos
+
+- Finalizar la implementación de la vista `InitialConfigurationPage` y conectar el cuestionario con la lógica del algoritmo.
+- Desarrollar las vistas para gestión y visualización de tareas por cuadrantes.
+- Implementar persistencia de datos mediante SQLite.
+- Diseñar e integrar el perfil de usuario para configuración y visualización de datos.
+- Profundizar en la validación de respuestas y optimización del algoritmo de clasificación.
+
+---
+
+**Resumen para el README:**
+
+> **26-27/4/2025:** Se abandona el uso de plantillas Grial para crear manualmente las vistas y sus ViewModels, logrando una navegación funcional entre 6 páginas principales mediante `Navigation.PushAsync` y eventos `Clicked` en XAML. Se diseña un algoritmo de clasificación basado en dos colecciones de preguntas (urgente e importante) y un diccionario de palabras clave para sumar puntos y clasificar tareas según la matriz Eisenhower. Se crean las clases `Question`, `User` y `UserAnswer`, y se desarrolla un cuestionario reutilizable que carga preguntas una a una desde JSON. Las imágenes en las vistas de configuración de tema e idioma son provisionales. Se crean archivos de recursos de strings para español e inglés y se trabaja en la referencia dinámica de los textos según el idioma seleccionado. Se planifican vistas para añadir tareas y visualización detallada por cuadrantes, así como la integración de SQLite para persistencia y un perfil de usuario. Se corrigen errores de binding, navegación y estructura MVVM, sentando bases sólidas para el desarrollo futuro.
 
 
 
