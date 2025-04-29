@@ -7,7 +7,7 @@
         <!--TODO FIX-->
         <VerticalStackLayout Spacing="24" Padding="20">
 
-            <!-- Pregunta 1: Objetivos principales -->
+            <!-- Pregunta 1: Objetivos principales --><!--
             <Label Text="¿Cuáles son tus principales objetivos?" FontAttributes="Bold"/>
             <CheckBox IsChecked="{Binding SaludChecked}" Content="Salud y bienestar"/>
             <CheckBox IsChecked="{Binding FamiliaChecked}" Content="Familia y relaciones"/>
@@ -17,7 +17,7 @@
             <CheckBox IsChecked="{Binding OcioChecked}" Content="Ocio y tiempo libre"/>
             <Entry Placeholder="Otro (especifica)" Text="{Binding OtroObjetivo}"/>
 
-            <!-- Pregunta 2: Actividades importantes -->
+            --><!-- Pregunta 2: Actividades importantes --><!--
             <Label Text="¿Qué actividades consideras más importantes en tu día a día?" FontAttributes="Bold"/>
             <CheckBox IsChecked="{Binding EjercicioChecked}" Content="Hacer ejercicio"/>
             <CheckBox IsChecked="{Binding TiempoFamiliaChecked}" Content="Pasar tiempo con la familia"/>
@@ -27,16 +27,16 @@
             <CheckBox IsChecked="{Binding SaludMentalChecked}" Content="Cuidar tu salud mental"/>
             <Entry Placeholder="Otro (especifica)" Text="{Binding OtroActividad}"/>
 
-            <!-- Pregunta 3: Tareas urgentes -->
+            --><!-- Pregunta 3: Tareas urgentes --><!--
             <Label Text="¿Qué tipo de tareas suelen ser más urgentes para ti?" FontAttributes="Bold"/>
             <Picker Title="Selecciona una opción" ItemsSource="{Binding OpcionesUrgentes}" SelectedItem="{Binding UrgenteSeleccionada}"/>
 
-            <!-- Pregunta 4: Palabras clave de tus prioridades -->
+            --><!-- Pregunta 4: Palabras clave de tus prioridades --><!--
             <Label Text="¿Qué palabras clave definen tus prioridades actuales?" FontAttributes="Bold"/>
             <Entry Placeholder="Ejemplo: salud, familia, trabajo, aprender, ahorrar" Text="{Binding PalabrasClave}"/>
 
-            <!-- Botón para enviar el cuestionario -->
-            <Button Text="Guardar y continuar" Command="{Binding GuardarCuestionarioCommand}"/>
+            --><!-- Botón para enviar el cuestionario --><!--
+            <Button Text="Guardar y continuar" Command="{Binding GuardarCuestionarioCommand}"/>-->
 
         </VerticalStackLayout>
     </ScrollView>
