@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "Text": "Which area of your life do you consider most important?",
+    "Options": [ "Family", "Work", "Health", "Friends", "Leisure" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 2,
+    "Text": "In which of these areas do you feel the most time pressure?",
+    "Options": [ "Work", "Family", "Health", "Leisure" ],
+    "Type": "urgency"
+  },
+  {
+    "Id": 3,
+    "Text": "Which activities give you the most personal satisfaction?",
+    "Options": [ "Time with family", "Professional achievements", "Taking care of your health", "Learning new things" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 4,
+    "Text": "What do you tend to postpone most often?",
+    "Options": [ "Medical appointments", "Family meetings", "Work projects", "Time for yourself" ],
+    "Type": "urgency"
+  },
+  {
+    "Id": 5,
+    "Text": "What is hardest for you to refuse?",
+    "Options": [ "Family requests", "Work urgencies", "Friends' invitations", "Leisure activities" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 6,
+    "Text": "What would you like to prioritize more in your daily life?",
+    "Options": [ "Health", "Family", "Work", "Leisure" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 7,
+    "Text": "Which activity causes you the most stress if not done on time?",
+    "Options": [ "Work deadlines", "Family appointments", "Medical check-ups", "Social activities" ],
+    "Type": "urgency"
+  },
+  {
+    "Id": 8,
+    "Text": "In which area do you feel you should invest more time?",
+    "Options": [ "Family", "Work", "Health", "Leisure" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 9,
+    "Text": "What type of tasks do you usually handle first?",
+    "Options": [ "Urgent ones", "Important ones", "Ones I like", "Ones others ask me to do" ],
+    "Type": "urgency"
+  },
+  {
+    "Id": 10,
+    "Text": "Which activity is easiest for you to leave for later?",
+    "Options": [ "Physical exercise", "Work meetings", "Time with friends", "Personal study" ],
+    "Type": "urgency"
+  },
+  {
+    "Id": 11,
+    "Text": "Which area do you consider least a priority in your life?",
+    "Options": [ "Leisure", "Work", "Family", "Health" ],
+    "Type": "importance"
+  },
+  {
+    "Id": 12,
+    "Text": "In which area would you like to improve your organization?",
+    "Options": [ "Work", "Family", "Health", "Leisure" ],
+    "Type": "importance"
+  }
+]
