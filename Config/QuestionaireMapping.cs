@@ -7,6 +7,7 @@ using TODOListInteligence.Models;
 
 namespace TODOListInteligence.Config
 {
+    //Clase que mapea las respuestas del cuestionario a un Área determinada en el enumerado AreaType (en en y es)
 public static class QuestionnaireMapping
 {
     // Español
