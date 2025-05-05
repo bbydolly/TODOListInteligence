@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TODOListInteligence.Models
 {
-    class UserAnswer
+    public class UserAnswer
     {
-        public int QuestionID { get; set; } 
+        public int QuestionId { get; set; }
         public string SelectedOption { get; set; }
+        public string QuestionType { get; set; } // "importancia" o "urgencia"
     }
 }
