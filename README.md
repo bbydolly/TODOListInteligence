@@ -279,5 +279,103 @@ El algoritmo de clasificación de tareas basado en la matriz Eisenhower está en
 > **26-27/4/2025:** Se abandona el uso de plantillas Grial para crear manualmente las vistas y sus ViewModels, logrando una navegación funcional entre 6 páginas principales mediante `Navigation.PushAsync` y eventos `Clicked` en XAML. Se diseña un algoritmo de clasificación basado en dos colecciones de preguntas (urgente e importante) y un diccionario de palabras clave para sumar puntos y clasificar tareas según la matriz Eisenhower. Se crean las clases `Question`, `User` y `UserAnswer`, y se desarrolla un cuestionario reutilizable que carga preguntas una a una desde JSON. Las imágenes en las vistas de configuración de tema e idioma son provisionales. Se crean archivos de recursos de strings para español e inglés y se trabaja en la referencia dinámica de los textos según el idioma seleccionado. Se planifican vistas para añadir tareas y visualización detallada por cuadrantes, así como la integración de SQLite para persistencia y un perfil de usuario. Se corrigen errores de binding, navegación y estructura MVVM, sentando bases sólidas para el desarrollo futuro.
 
 
+## Fecha
+**4-5/5/2025**
+
+### Implementación de la lógica de la matriz de Eisenhower y configuración avanzada
+
+### Rama de trabajo
+
+El desarrollo de la lógica de la matriz de Eisenhower y sus servicios asociados se está realizando en la rama **feature-heisenhower-matrix**.
+
+> **Nota:** Algunas clases aún no contienen el namespace correcto, algo pendiente de corregir en próximas refactorizaciones para mantener la coherencia del proyecto.
+
+---
+
+### Avances y cambios realizados
+
+#### Servicios y modelos principales
+
+- **EisenhowerMatrixService:** Servicio estático que centraliza la lógica de clasificación de tareas en los cuadrantes de la matriz Eisenhower.
+- **UserPreferenceService:** Procesa las respuestas del cuestionario y actualiza los diccionarios de importancia y urgencia del usuario.
+- **Modelos:** `User`, `UserAnswer`, `Question`, `AreaType`.
+
+#### Nuevas clases de configuración y mapeo
+
+- **EisenhowerConfig** (`Config/EisenhowerConfig.cs`):  
+  Clase estática que centraliza la configuración de los umbrales utilizados en la lógica de clasificación Eisenhower.
+  - `ImportanceThreshold = 3` (mínimo de selecciones para considerar un área como importante, ajustado al número de preguntas del cuestionario).
+  - `UrgencyThreshold = 2` (mínimo de selecciones para considerar un área como urgente).
+  - Permite modificar los criterios de clasificación de manera sencilla y coherente para toda la aplicación, evitando la dispersión de "números mágicos" por el código.
+- **QuestionnaireMapping:** Diccionarios bilingües para mapear opciones del cuestionario a áreas.
+- **AppConfig:** Centraliza las colecciones de palabras clave por área y expone el método `DetectArea`.
+- **UserConfig:** Clase para la configuración del usuario, incluyendo idioma, tema y palabras clave personalizadas.
+
+---
+
+### Compartimentación y estructura de código
+
+- **Separación clara de responsabilidades:**
+  - Lógica de negocio y clasificación → `EisenhowerMatrixService`, `UserPreferenceService`
+  - Configuración y mapeo de áreas → `EisenhowerConfig`, `AppConfig`, `QuestionnaireMapping`, `UserConfig`
+  - Modelos de datos → `/Models`
+- **Centralización de palabras clave y umbrales** en los servicios y archivos de configuración.
+- **Flexibilidad para futuras ampliaciones:** la arquitectura permite añadir nuevas áreas, ajustar umbrales y cargar palabras clave dinámicamente.
+
+---
+
+### Problemas de algoritmia y soluciones aplicadas
+
+- **Exclusividad o solapamiento de áreas en colecciones de prioridad:**  
+  Actualmente se está valorando si una misma área debe pertenecer exclusivamente a una sola colección de prioridad (es decir, ser considerada únicamente como importante o únicamente como urgente) o si, por el contrario, puede formar parte de ambas colecciones simultáneamente. El objetivo es encontrar el equilibrio óptimo entre la claridad en la clasificación y la flexibilidad del algoritmo.  
+  Además, se está flexibilizando el algoritmo para permitir que varias áreas puedan formar parte de una misma categoría (por ejemplo, que varias áreas sean importantes o varias sean urgentes si cumplen los umbrales).
+- **Detección de áreas multilingüe:**  
+  Colecciones de palabras clave y diccionarios bilingües para identificar correctamente el área de una tarea o respuesta.
+- **Asignación de prioridades precisa:**  
+  Umbrales diferenciados para importancia (3) y urgencia (2), ajustados al número de preguntas de cada tipo en el cuestionario, centralizados en la clase `EisenhowerConfig`.
+- **Gestión de áreas no marcadas:**  
+  Si un área no alcanza el umbral, las tareas asociadas se clasifican automáticamente en el cuadrante 4.
+- **Internacionalización y normalización:**  
+  Procesamiento robusto de tipos de pregunta y mapeo correcto de opciones a áreas.
+- **Namespaces incompletos:**  
+  Detectado que algunas clases carecen del namespace adecuado, pendiente de corregir.
+
+
+---
+
+### Archivos y clases creados en esta iteración
+
+- `/Services/EisenhowerMatrixService.cs`
+- `/Services/UserPreferenceService.cs`
+- `/Services/QuestionLoader.cs`
+- `/Models/AreaType.cs`
+- `/Models/User.cs`
+- `/Models/UserAnswer.cs`
+- `/Models/Question.cs`
+- `/Config/EisenhowerConfig.cs`
+- `/Config/QuestionnaireMapping.cs`
+- `/Config/AppConfig.cs`
+- `/Config/UserConfig.cs`
+
+---
+
+### Estado y próximos pasos
+
+- La lógica de clasificación de tareas en los cuadrantes de la matriz de Eisenhower está operativa y en fase de pruebas.
+- Es necesario cargar el cuestionario de preguntas y respuestas asignadas en bloques, convirtiendo el JSON en objetos con los que trabajar y almacenando esas respuestas para su posterior análisis.
+- Se está trabajando en la reutilización de una única vista para ir mostrando secuencialmente cada pregunta del cuestionario, facilitando la navegación y el flujo dinámico de preguntas y respuestas.
+- Se continuará con la integración de la carga dinámica de cuestionarios y la mejora de la detección de áreas.
+- Se revisarán y corregirán los namespaces de todas las clases para cumplir con las buenas prácticas de organización de código.
+
+> **Nota:** La matriz de Eisenhower está actualmente en fase de pruebas y ajustes.
+
+
+---
+
+**Rama:**  
+Todo el código mencionado se encuentra en la rama **feature-heisenhower-matrix**, que sigue en desarrollo activo.
+
+
+
 
 
