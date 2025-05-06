@@ -70,11 +70,47 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No se encontraron preguntas..
+        /// </summary>
+        internal static string ErrorNoQuestions {
+            get {
+                return ResourceManager.GetString("ErrorNoQuestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error.
+        /// </summary>
+        internal static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¡Bienvenido!.
         /// </summary>
         internal static string LabelTextWelcome {
             get {
                 return ResourceManager.GetString("LabelTextWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Siguiente.
+        /// </summary>
+        internal static string NextButtonText {
+            get {
+                return ResourceManager.GetString("NextButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a OK.
+        /// </summary>
+        internal static string OkText {
+            get {
+                return ResourceManager.GetString("OkText", resourceCulture);
             }
         }
     }

@@ -2,32 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODOListInteligence.Views.LenguageConfigurationPage"
-             Title="LenguageConfigurationPage">
+             Title="LenguageConfigurationPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+
+    <ContentPage.Resources>
+        <!-- Estilo para RadioButton que adapta colores al tema -->
+        <Style TargetType="RadioButton">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=Black}" />
+        </Style>
+        <!-- Estilo para Button que adapta colores al tema -->
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=Black}" />
+        </Style>
+        <!-- Estilo para Label que adapta colores al tema -->
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+        </Style>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
         <Label 
             Text="Configuración de idioma"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <HorizontalStackLayout  HorizontalOptions="Center" 
-         VerticalOptions="Center" 
-         Spacing="40"
-         Grid.Row="1">
+        <HorizontalStackLayout HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               Spacing="40"
+                               Grid.Row="1">
 
-            <!--TODO cambiar las imagenes-->
             <Image Source="todo_list_inteligence.JPG" HeightRequest="290" WidthRequest="290"/>
-
             <Image Source="todo_list_inteligence.JPG" HeightRequest="290" WidthRequest="290"/>
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout 
-         HorizontalOptions="Center" 
-         VerticalOptions="Start" 
-         Spacing="40"
-         Grid.Row="2">
+        <HorizontalStackLayout
+          x:Name="IdiomaRadioGroup"
+          HorizontalOptions="Center" 
+          VerticalOptions="Start" 
+          Spacing="40"
+          Grid.Row="2">
 
-            <RadioButton Content="Inglés" GroupName="temas" />
-            <RadioButton Content="Español" GroupName="temas" />
+            <RadioButton x:Name="RadioEnglish" Content="Inglés" GroupName="idioma" Value="en" />
+            <RadioButton x:Name="RadioSpanish" Content="Español" GroupName="idioma" Value="es" />
 
         </HorizontalStackLayout>
 
