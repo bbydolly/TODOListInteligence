@@ -9,7 +9,7 @@ namespace TODOListInteligence.Models
     public class UserAnswer
     {
         public int QuestionId { get; set; }
-        public string SelectedOption { get; set; }
-        public string QuestionType { get; set; } // "importancia" o "urgencia"
+        public string SelectedOption { get; set; } = string.Empty;
+        public string QuestionType { get; set; } = string.Empty;// "importancia" o "urgencia"
     }
 }

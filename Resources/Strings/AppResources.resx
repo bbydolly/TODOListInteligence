@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LabelTextWelcome" xml:space="preserve">
+    <value>¡Bienvenido!</value>
+  </data>
+  <data name="OkText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorNoQuestions" xml:space="preserve">
+    <value>No se encontraron preguntas.</value>
+  </data>
   <data name="ButtonWelcomePage" xml:space="preserve">
     <value>Empezar ahora</value>
   </data>
-  <data name="LabelTextWelcome" xml:space="preserve">
-    <value>¡Bienvenido!</value>
+  <data name="NextButtonText" xml:space="preserve">
+    <value>Siguiente</value>
   </data>
 </root>

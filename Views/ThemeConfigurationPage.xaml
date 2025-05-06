@@ -21,13 +21,14 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout 
+            x:Name="ThemeRadioGroup"
             HorizontalOptions="Center" 
             VerticalOptions="Start" 
             Spacing="40"
             Grid.Row="2">
 
-            <RadioButton Content="Tema claro" GroupName="temas" />
-            <RadioButton Content="Tema oscuro" GroupName="temas" />
+            <RadioButton Content="Tema claro" GroupName="temas" Value="light" />
+            <RadioButton Content="Tema oscuro" GroupName="temas" Value="dark" />
 
         </HorizontalStackLayout>
 
