@@ -9,9 +9,7 @@ namespace TODOListInteligence.Config
 {
     public class AppConfig
     {
-        public string Language { get; set; } = "es";
-        public string Theme { get; set; } = "claro";
-
+        
         private static AppConfig _instance;
         public static AppConfig Instance => _instance ??= new AppConfig();
 
@@ -70,7 +68,7 @@ namespace TODOListInteligence.Config
         }
 
         // Método que me permite recorrer mis colecciones y si encuentra coincidencia con la tarea que ha agregado el usuario
-        // 
+        // devuelve el área a la que pertenece
         public AreaType? DetectArea(string taskDescription)
         {
             var allKeywords = GetAllKeywords();

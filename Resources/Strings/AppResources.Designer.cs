@@ -61,6 +61,33 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Tareas agregadas.
+        /// </summary>
+        internal static string AddedTasksLabel {
+            get {
+                return ResourceManager.GetString("AddedTasksLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Agregar.
+        /// </summary>
+        internal static string AddTaskButton {
+            get {
+                return ResourceManager.GetString("AddTaskButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Agregar tarea.
+        /// </summary>
+        internal static string AddTaskTitle {
+            get {
+                return ResourceManager.GetString("AddTaskTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Empezar ahora.
         /// </summary>
         internal static string ButtonWelcomePage {
@@ -70,11 +97,128 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No se encontraron preguntas..
+        /// </summary>
+        internal static string ErrorNoQuestions {
+            get {
+                return ResourceManager.GetString("ErrorNoQuestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error.
+        /// </summary>
+        internal static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finalizar.
+        /// </summary>
+        internal static string FinishButtonText {
+            get {
+                return ResourceManager.GetString("FinishButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Importante.
+        /// </summary>
+        internal static string ImportanceLabel {
+            get {
+                return ResourceManager.GetString("ImportanceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¡Bienvenido!.
         /// </summary>
         internal static string LabelTextWelcome {
             get {
                 return ResourceManager.GetString("LabelTextWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Siguiente.
+        /// </summary>
+        internal static string NextButtonText {
+            get {
+                return ResourceManager.GetString("NextButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No urgente.
+        /// </summary>
+        internal static string NotUrgentText {
+            get {
+                return ResourceManager.GetString("NotUrgentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a OK.
+        /// </summary>
+        internal static string OkText {
+            get {
+                return ResourceManager.GetString("OkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Descripción.
+        /// </summary>
+        internal static string TaskDescriptionLabel {
+            get {
+                return ResourceManager.GetString("TaskDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Describe la tarea.
+        /// </summary>
+        internal static string TaskDescriptionPlaceholder {
+            get {
+                return ResourceManager.GetString("TaskDescriptionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre de la tarea.
+        /// </summary>
+        internal static string TaskNameLabel {
+            get {
+                return ResourceManager.GetString("TaskNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Introduce el nombre de la tarea.
+        /// </summary>
+        internal static string TaskNamePlaceholder {
+            get {
+                return ResourceManager.GetString("TaskNamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Urgencia.
+        /// </summary>
+        internal static string UrgencyLabel {
+            get {
+                return ResourceManager.GetString("UrgencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Urgente.
+        /// </summary>
+        internal static string UrgentText {
+            get {
+                return ResourceManager.GetString("UrgentText", resourceCulture);
             }
         }
     }

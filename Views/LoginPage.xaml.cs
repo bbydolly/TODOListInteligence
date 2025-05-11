@@ -18,7 +18,7 @@ namespace TODOListInteligence.Views
             // 2. Crear objeto user
             // 3. Guardarlo en una base de datos ligera
             
-            await Navigation.PushAsync(new ThemeConfigurationPage());
+            await Navigation.PushAsync(new AddTaskPage());
 
         }
     }

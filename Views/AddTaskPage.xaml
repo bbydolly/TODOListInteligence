@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TODOListInteligence.Resources.Strings"
+             x:Class="TODOListInteligence.Views.AddTaskPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <!-- Título -->
+            <Label Text="{x:Static resx:AppResources.AddTaskTitle}" 
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Nombre de la tarea -->
+            <Label Text="{x:Static resx:AppResources.TaskNameLabel}" 
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Start"/>
+            <Entry x:Name="TaskNameEntry"
+                   Placeholder="{x:Static resx:AppResources.TaskNamePlaceholder}" 
+                   HorizontalOptions="FillAndExpand"/>
+
+            <!-- Descripción de la tarea -->
+            <Label Text="{x:Static resx:AppResources.TaskDescriptionLabel}" 
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Start"/>
+            <Editor x:Name="TaskDescriptionEditor"
+                    Placeholder="{x:Static resx:AppResources.TaskDescriptionPlaceholder}"
+                    AutoSize="TextChanges"
+                    HeightRequest="80"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <!-- Selector de urgencia con CheckBox alineado a la izquierda -->
+            <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
+                <Label Text="{x:Static resx:AppResources.UrgencyLabel}"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+                <CheckBox x:Name="UrgentCheckBox"
+                          VerticalOptions="Center"/>
+                <!--<Label Text="{x:Static resx:AppResources.UrgentText}"
+                       VerticalOptions="Center"/>-->
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
+                <Label Text="{x:Static resx:AppResources.ImportanceLabel}"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       VerticalOptions="Center"/>
+                <CheckBox x:Name="ImportantCheckBox"
+                          VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Botón Agregar alineado a la izquierda -->
+            <Button Text="{x:Static resx:AppResources.AddTaskButton}"
+                    x:Name="AddTaskButton"
+                    Clicked="AddTaskButton_Clicked"
+                    HorizontalOptions="Start"
+                    WidthRequest="180"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Margin="0,30,0,0"/>
+
+            <!-- Lista de tareas agregadas -->
+            <Label Text="{x:Static resx:AppResources.AddedTasksLabel}" 
+                   FontAttributes="Bold" Margin="0,20,0,0" HorizontalOptions="Start"/>
+
+            <CollectionView x:Name="TasksCollectionView"
+                            ItemsSource="{Binding Tasks}"
+                            HeightRequest="250"
+                            Margin="0,0,0,20">
+                <CollectionView.Header>
+                    <Grid ColumnDefinitions="2*,3*" BackgroundColor="#EEEEEE" Padding="5">
+                        <Label Text="{x:Static resx:AppResources.TaskNameLabel}" FontAttributes="Bold"/>
+                        <Label Text="{x:Static resx:AppResources.TaskDescriptionLabel}" FontAttributes="Bold" Grid.Column="1"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="2*,3*" Padding="5" BackgroundColor="White">
+                            <Label Text="{Binding Title}" Grid.Column="0"/>
+                            <Label Text="{Binding Description}" Grid.Column="1" LineBreakMode="TailTruncation"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
