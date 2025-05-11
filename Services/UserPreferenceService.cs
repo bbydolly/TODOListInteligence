@@ -6,11 +6,11 @@ namespace TODOListInteligence.Services
     public class UserPreferenceService
     {
         public static void ProcessQuestionnaire(
-            User user,
+           UserConfig user,
             List<UserAnswer> answers,
             string userLanguage)
         {
-            user.InitDictionarys();
+            user.InitDictionaries();
 
             var optionToArea = userLanguage == "es"
                 ? QuestionnaireMapping.OptionToAreaEs

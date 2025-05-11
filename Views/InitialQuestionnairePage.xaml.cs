@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TODOListInteligence.Models;
-using TODOListInteligence.Config;
 using TODOListInteligence.Helpers;
 using TODOListInteligence.Resources; // Para los textos multilingües
 using Microsoft.Maui.Controls;
 using TODOListInteligence.Resources.Strings;
 using System.IO.IsolatedStorage;
 using System.Diagnostics;
+using TODOListInteligence.Services;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views;
 
@@ -29,6 +30,7 @@ public partial class InitialQuestionnairePage : ContentPage
         AppSettings.ApplyTheme();
         // Establece el texto del botón desde recursos
         NextButton.Text = AppResources.NextButtonText;
+       
         //Limpio las respuestas previas del usuario
         UserConfig.Instance.UserAnswers.Clear();
         //cargo las preguntas del cuestionario
@@ -75,9 +77,11 @@ public partial class InitialQuestionnairePage : ContentPage
     //Muestra la pregunta actual y sus opciones
     private void LoadCurrentQuestion()
     {
+        AppSettings.ApplyCulture();//fuerzo la aplicación del idioma
+
         selectedOptionIndex = null; //reseteo la opcion seleccionada
         NextButton.IsVisible = false;
-        NextButton.Text = AppResources.NextButtonText;
+        //NextButton.Text = AppResources.NextButtonText;
 
         OptionsPanel.Children.Clear();
         var question = questions[currentIndex];
@@ -96,6 +100,18 @@ public partial class InitialQuestionnairePage : ContentPage
             radio.CheckedChanged += Radio_CheckedChanged;
             OptionsPanel.Children.Add(radio);
         }
+
+        // Cambio el texto del botón dependiendo de si es la última pregunta
+        if (currentIndex == questions.Count - 1)
+        {
+
+            NextButton.Text = AppResources.FinishButtonText;
+        }
+        //else
+        //{
+
+        //    NextButton.Text = AppResources.NextButtonText;
+        //}
     }
 
     private void Radio_CheckedChanged(object? sender, CheckedChangedEventArgs e)
@@ -121,6 +137,7 @@ public partial class InitialQuestionnairePage : ContentPage
         answer.QuestionId = question.Id;
         answer.SelectedOption = question.Options[selectedOptionIndex.Value];
         answer.QuestionType = question.Type;
+        Debug.WriteLine(answer.QuestionId + " opcionselect " + answer.SelectedOption + " type " + answer.QuestionType);
 
         //la añado ala colección
         //userAnswers.Add(answer);
@@ -133,11 +150,40 @@ public partial class InitialQuestionnairePage : ContentPage
         {
             LoadCurrentQuestion();// cargo la siguiente pregunta
         }
-        else
+        else //finaliza el cuestionario
         {
+            //Proceso las respuestas del cuestionario
+
+
+
+            // 1. Procesa el cuestionario y suma puntos por área
+            UserPreferenceService.ProcessQuestionnaire(
+                UserConfig.Instance,
+                UserConfig.Instance.UserAnswers,
+                UserConfig.Instance.UserLanguage
+            );
+
+            // 2. Calcula los porcentajes por área
+            UserConfig.Instance.CalculatePercents();
+
+            //visualizacion de las puntuaciones 
+            foreach (AreaType area in Enum.GetValues(typeof(AreaType)))
+            {
+                int imp = UserConfig.Instance.Importance[area];
+                int urg = UserConfig.Instance.Urgency[area];
+                double impPct = UserConfig.Instance.ImportancePercent[area];
+                double urgPct = UserConfig.Instance.UrgencyPercent[area];
+
+                Debug.WriteLine($"{area}: Importancia = {imp} ({impPct:P1}), Urgencia = {urg} ({urgPct:P1})");
+            }
+
+
+            //persistencia de datos del usuario, 
+            UserConfigStorage.Save();
+
             //navego a otra página que todavía no está creada
 
-            //await Navigation.PushAsync(new InsertTask());
+            await Navigation.PushAsync(new AddTaskPage());
         }
     }
 }

@@ -10,7 +10,8 @@ namespace TODOListInteligence.Config
 
     public static class EisenhowerMatrixService
     {
-        public static string ClassifyTask(User user, string taskDescription)
+
+        public static string ClassifyTask(UserConfig user, string taskDescription)
         {
             // 1. Detecta el área de la tarea
             AreaType? area = AppConfig.Instance.DetectArea(taskDescription);

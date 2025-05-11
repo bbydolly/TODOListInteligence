@@ -1,4 +1,4 @@
-using TODOListInteligence.Config;
+using TODOListInteligence.Models;
 
 namespace TODOListInteligence.Views;
 

@@ -135,4 +135,40 @@
   <data name="NextButtonText" xml:space="preserve">
     <value>Siguiente</value>
   </data>
+  <data name="FinishButtonText" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="AddTaskTitle" xml:space="preserve">
+    <value>Agregar tarea</value>
+  </data>
+  <data name="TaskNameLabel" xml:space="preserve">
+    <value>Nombre de la tarea</value>
+  </data>
+  <data name="TaskNamePlaceholder" xml:space="preserve">
+    <value>Introduce el nombre de la tarea</value>
+  </data>
+  <data name="UrgencyLabel" xml:space="preserve">
+    <value>Urgencia</value>
+  </data>
+  <data name="UrgentText" xml:space="preserve">
+    <value>Urgente</value>
+  </data>
+  <data name="NotUrgentText" xml:space="preserve">
+    <value>No urgente</value>
+  </data>
+  <data name="AddTaskButton" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="TaskDescriptionLabel" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="TaskDescriptionPlaceholder" xml:space="preserve">
+    <value>Describe la tarea</value>
+  </data>
+  <data name="AddedTasksLabel" xml:space="preserve">
+    <value>Tareas agregadas</value>
+  </data>
+  <data name="ImportanceLabel" xml:space="preserve">
+    <value>Importante</value>
+  </data>
 </root>

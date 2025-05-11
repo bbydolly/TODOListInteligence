@@ -1,5 +1,5 @@
-using TODOListInteligence.Config;
 using TODOListInteligence.Helpers;
+using TODOListInteligence.Models;
 
 namespace TODOListInteligence.Views;
 

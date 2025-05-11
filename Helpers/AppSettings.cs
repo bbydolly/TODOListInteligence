@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TODOListInteligence.Config;
 using Microsoft.Maui; // Necesario para Application
-using Microsoft.Maui.Controls; // Necesario para Application.Current y AppTheme
+using Microsoft.Maui.Controls;
+using TODOListInteligence.Models; // Necesario para Application.Current y AppTheme
 
 namespace TODOListInteligence.Helpers
 {
