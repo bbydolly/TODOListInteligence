@@ -375,7 +375,54 @@ El desarrollo de la lógica de la matriz de Eisenhower y sus servicios asociados
 **Rama:**  
 Todo el código mencionado se encuentra en la rama **feature-heisenhower-matrix**, que sigue en desarrollo activo.
 
+## Fecha
+**10-11/5/2025**
 
+## 🛠️ Cambios y avances recientes 
 
+### Nuevas funcionalidades implementadas
+- **Selector de Urgencia e Importancia:**  
+  Ahora, al añadir una tarea, el usuario puede marcar si la tarea es *urgente* y/o *importante* mediante dos casillas de verificación (CheckBox), ambas alineadas a la izquierda y con etiquetas en negrita.
+- **Clasificación automática de tareas:**  
+  Si el usuario no marca ninguna etiqueta de urgencia o importancia, el sistema clasifica la tarea automáticamente usando el algoritmo de palabras clave y los resultados del cuestionario, asignando el área y el cuadrante de la matriz de Eisenhower.
+- **Detección automática de área:**  
+  Al crear una tarea, el sistema analiza el título y la descripción para identificar a qué área pertenece (Trabajo, Familia, Salud, Ocio, Amigos) usando palabras clave en español e inglés.
+- **Visualización de cuadrante y área:**  
+  Las tareas pueden mostrar en la lista tanto el área detectada como el cuadrante Eisenhower correspondiente.
 
+### Clases y arquitectura
+- **Creación y mejora de clases:**  
+  Se crearon y/o reconfiguraron varias clases clave del proyecto:
+  - `UserTask`: Ahora almacena información sobre urgencia, importancia, área y cuadrante.
+  - `AppConfig`: Gestiona palabras clave y detección de áreas.
+  - `EisenhowerMatrixService`: Clasifica las tareas según la matriz de Eisenhower.
+  - `UserConfig`: Gestiona la configuración y preferencias del usuario.
+  - `QuestionnaireMapping` y servicios relacionados: Mapean respuestas del cuestionario a áreas.
+- **Refactorización de código:**  
+  Se reorganizó y limpió el code-behind y los modelos para mejorar la claridad, la mantenibilidad y la integración con la lógica de clasificación.
 
+### Errores corregidos
+- **RadioButton sustituido por CheckBox:**  
+  Se corrigió el uso de RadioButton (que no permite desmarcarse) por CheckBox, permitiendo seleccionar y deseleccionar las opciones de urgencia e importancia.
+- **Alineación y diseño:**  
+  Se ajustó la alineación de los campos y botones para que todo quede a la izquierda, y los campos de entrada ocupen todo el ancho disponible.
+- **Scroll vertical:**  
+  Se envolvió toda la vista en un `ScrollView` para asegurar que la pantalla es completamente desplazable en dispositivos móviles.
+- **Limpieza de referencias obsoletas:**  
+  Se eliminaron referencias a controles ya no existentes (como `NotUrgentRadio`) y se actualizaron los nombres de controles en el code-behind.
+- **Reseteo de campos tras añadir tarea:**  
+  Ahora, al añadir una tarea, todos los campos y checkboxes se limpian correctamente.
+
+### Otros avances
+- Se integró el algoritmo de clasificación de áreas y cuadrantes con la lógica de la interfaz de usuario.
+- Se mejoró la estructura del modelo `UserTask` para almacenar área y cuadrante.
+- Se añadió la posibilidad de mostrar área y cuadrante en la lista de tareas.
+- Se documentó el flujo de clasificación automática y manual de tareas.
+
+---
+
+### ¿Qué queda pendiente?
+- Mejorar la visualización de cuadrantes (por ejemplo, con colores o iconos).
+- Permitir edición y eliminación de tareas.
+- Mejorar la detección automática de área con IA o reglas más avanzadas (opcional).
+- Internacionalización completa de etiquetas si se añaden nuevos campos.
