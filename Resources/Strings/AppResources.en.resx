@@ -234,4 +234,58 @@
   <data name="DeleteConfirmNo" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="LabelWelcomeBack" xml:space="preserve">
+    <value>Welcome Back</value>
+  </data>
+  <data name="ButtonLogin" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="EntryPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="WrongCredentials" xml:space="preserve">
+    <value>Wrong email or password</value>
+  </data>
+  <data name="MatrixTitle" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
+  <data name="UserTitle" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="EntryName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ButtonCreateAccount" xml:space="preserve">
+    <value>Create account</value>
+  </data>
+  <data name="LabelAlreadyAccount" xml:space="preserve">
+    <value>Do you have an account?</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="PlaceholderSetName" xml:space="preserve">
+    <value>Set your name</value>
+  </data>
+  <data name="PlaceholderSetEmail" xml:space="preserve">
+    <value>Set your email</value>
+  </data>
+  <data name="LabelLang" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LabelTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="LabelLight" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="LabelDark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
 </root>

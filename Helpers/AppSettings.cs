@@ -15,8 +15,17 @@ namespace TODOListInteligence.Helpers
         public static void ApplyCulture()
         {
             string userLang = UserConfig.Instance.UserLanguage ?? "es";
-            CultureInfo culture = new CultureInfo(userLang);
+            var culture = userLang switch
+            {
+                "en" => new CultureInfo("en-US"),
+                "es" => new CultureInfo("es-ES"),
+                _ => new CultureInfo("es-ES")
+            };
+
             Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+            CultureInfo.DefaultThreadCurrentCulture = culture;
         }
 
         public static void ApplyTheme()

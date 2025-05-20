@@ -234,4 +234,58 @@
   <data name="DeleteConfirmNo" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="LabelWelcomeBack" xml:space="preserve">
+    <value>Bienvenido de nuevo</value>
+  </data>
+  <data name="ButtonLogin" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="EntryPassword" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="WrongCredentials" xml:space="preserve">
+    <value>Email o contraseña incorrectos</value>
+  </data>
+  <data name="MatrixTitle" xml:space="preserve">
+    <value>Matriz</value>
+  </data>
+  <data name="UserTitle" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="EntryName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ButtonCreateAccount" xml:space="preserve">
+    <value>Crear cuenta</value>
+  </data>
+  <data name="LabelAlreadyAccount" xml:space="preserve">
+    <value>¿Ya tienes una cuenta?</value>
+  </data>
+  <data name="ButtonNext" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="PlaceholderSetName" xml:space="preserve">
+    <value>Introduce tu nombre</value>
+  </data>
+  <data name="PlaceholderSetEmail" xml:space="preserve">
+    <value>Introduce tu email</value>
+  </data>
+  <data name="LabelLang" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Spanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+  <data name="LabelTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="LabelLight" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="LabelDark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
 </root>

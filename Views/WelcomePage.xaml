@@ -5,7 +5,7 @@
     xmlns:viewmodel="clr-namespace:TODOListInteligence.ViewModels"
     xmlns:strings="clr-namespace:TODOListInteligence.Resources.Strings"
     x:Class="TODOListInteligence.Views.WelcomePage"
-    Title="{x:Static strings:AppResources.LabelTextWelcome}">
+    >
     <!-- Define de dónde sacaremos los datos para esta página (el ViewModel) -->
     <ContentPage.BindingContext>
         <viewmodel:WelcomePageViewModel />
@@ -46,7 +46,7 @@
 
             <!-- Botón "Empezar Ahora" -->
             <Button
-                Text="Empezar Ahora"
+                Text="{x:Static strings:AppResources.ButtonWelcomePage}"
                 Clicked="OnStartNowClicked"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
