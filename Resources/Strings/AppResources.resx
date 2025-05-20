@@ -171,4 +171,22 @@
   <data name="ImportanceLabel" xml:space="preserve">
     <value>Importante</value>
   </data>
+  <data name="DistributeTasksButton" xml:space="preserve">
+    <value>Distribuir tareas</value>
+  </data>
+  <data name="NotImportant" xml:space="preserve">
+    <value>No importante</value>
+  </data>
+  <data name="DoNow" xml:space="preserve">
+    <value>Realizar de inmediato</value>
+  </data>
+  <data name="PlanAndResolve" xml:space="preserve">
+    <value>Planificar con exactitud y resolver</value>
+  </data>
+  <data name="Delegate" xml:space="preserve">
+    <value>Delegar</value>
+  </data>
+  <data name="DiscardOrArchive" xml:space="preserve">
+    <value>Desechar o archivar</value>
+  </data>
 </root>

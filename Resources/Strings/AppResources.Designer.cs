@@ -97,6 +97,42 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Delegar.
+        /// </summary>
+        internal static string Delegate {
+            get {
+                return ResourceManager.GetString("Delegate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Desechar o archivar.
+        /// </summary>
+        internal static string DiscardOrArchive {
+            get {
+                return ResourceManager.GetString("DiscardOrArchive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Distribuir tareas.
+        /// </summary>
+        internal static string DistributeTasksButton {
+            get {
+                return ResourceManager.GetString("DistributeTasksButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Realizar de inmediato.
+        /// </summary>
+        internal static string DoNow {
+            get {
+                return ResourceManager.GetString("DoNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No se encontraron preguntas..
         /// </summary>
         internal static string ErrorNoQuestions {
@@ -151,6 +187,15 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No importante.
+        /// </summary>
+        internal static string NotImportant {
+            get {
+                return ResourceManager.GetString("NotImportant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No urgente.
         /// </summary>
         internal static string NotUrgentText {
@@ -165,6 +210,15 @@ namespace TODOListInteligence.Resources.Strings {
         internal static string OkText {
             get {
                 return ResourceManager.GetString("OkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Planificar con exactitud y resolver.
+        /// </summary>
+        internal static string PlanAndResolve {
+            get {
+                return ResourceManager.GetString("PlanAndResolve", resourceCulture);
             }
         }
         

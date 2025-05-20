@@ -8,7 +8,7 @@ using TODOListInteligence.Models;
 namespace TODOListInteligence.Config
 {
 
-    public static class EisenhowerMatrixService
+    public static class ClasifyTaskServices
     {
 
         public static string ClassifyTask(UserConfig user, string taskDescription)

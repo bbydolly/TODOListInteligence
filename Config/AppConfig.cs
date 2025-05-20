@@ -9,7 +9,7 @@ namespace TODOListInteligence.Config
 {
     public class AppConfig
     {
-        
+
         private static AppConfig _instance;
         public static AppConfig Instance => _instance ??= new AppConfig();
 
@@ -69,18 +69,25 @@ namespace TODOListInteligence.Config
 
         // Método que me permite recorrer mis colecciones y si encuentra coincidencia con la tarea que ha agregado el usuario
         // devuelve el área a la que pertenece
-        public AreaType? DetectArea(string taskDescription)
+        public AreaType? DetectArea(string taskTitle)
         {
             var allKeywords = GetAllKeywords();
+            System.Diagnostics.Debug.WriteLine($"[DEBUG] Detectando área para: '{taskTitle}'");
             foreach (var area in allKeywords.Keys)
             {
+               // System.Diagnostics.Debug.WriteLine($"[DEBUG] Revisando área: {area}");
                 foreach (var keyword in allKeywords[area])
                 {
-                    if (taskDescription.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
-                        return area; // Returns the area of the first match found
+                   // System.Diagnostics.Debug.WriteLine($"[DEBUG] Comparando con keyword: '{keyword}'");
+                    if (taskTitle.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"[DEBUG] '{taskTitle}' detectado como área {area} por palabra clave '{keyword}'");
+                        return area; // devuelve el área de la primera coincidencia
+                    }
                 }
             }
-            return null; // No match found
+            System.Diagnostics.Debug.WriteLine($"[DEBUG] '{taskTitle}' NO detectado en ningún área.");
+            return null; // No encontró área
         }
 
     }

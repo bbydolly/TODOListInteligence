@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:TODOListInteligence.Resources.Strings"
+             x:Class="TODOListInteligence.Views.EisenhowerMatrixPage"
+             x:Name="MatrixPageRef"
+             Title="EisenhowerMatrixPage">
+
+    <Grid Padding="20" Margin="16" RowSpacing="0" ColumnSpacing="0">
+        <!-- Definición de filas y columnas -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Encabezados superiores -->
+        <Label Grid.Row="1" Grid.Column="1" Text="{x:Static resx:AppResources.UrgentText}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,8"/>
+        <Label Grid.Row="1" Grid.Column="2" Text="{x:Static resx:AppResources.NotUrgentText}" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,8"/>
+
+        <!-- Encabezados laterales -->
+        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static resx:AppResources.ImportanceLabel}" FontAttributes="Bold" VerticalOptions="Center" Margin="0,0,8,0"/>
+        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static resx:AppResources.NotImportant}" FontAttributes="Bold" VerticalOptions="Center" Margin="0,0,8,0"/>
+
+        <!-- Cuadrante 1: Urgente & Importante -->
+        <Frame Grid.Row="2" Grid.Column="1" BorderColor="Black" CornerRadius="0" Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{x:Static resx:AppResources.DoNow}" FontSize="Small" HorizontalOptions="Center"/>
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding UrgentAndImportantTasks}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnTaskSelected"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,Auto" Padding="4">
+                                <Label Text="{Binding Title}" FontSize="Small" VerticalOptions="Center"/>
+                                <Button Grid.Column="1"
+                                        Text="-"
+                                        Margin="4,0"                                      
+                                       Clicked="OnDeleteButtonClicked"
+                                        FontSize="Small"
+                                        WidthRequest="32"
+                                        HeightRequest="32"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+
+        <!-- Cuadrante 2: No urgente & Importante -->
+        <Frame Grid.Row="2" Grid.Column="2" BorderColor="Black" CornerRadius="0" Padding="8" Margin="0,0,16,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{x:Static resx:AppResources.PlanAndResolve}" FontSize="Small" HorizontalOptions="Center"/>
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding ImportantButNotUrgentTasks}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnTaskSelected"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,Auto" Padding="4">
+                                <Label Text="{Binding Title}"
+           FontSize="Small"
+           VerticalOptions="Center"
+           HorizontalOptions="StartAndExpand"
+           LineBreakMode="TailTruncation"
+           MaxLines="1"/>
+                                <Button Grid.Column="1"
+            Text="-"
+            Margin="4,0"
+            Clicked="OnDeleteButtonClicked"
+            FontSize="Small"
+            WidthRequest="32"
+            HeightRequest="32"
+            HorizontalOptions="End"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+
+        <!-- Cuadrante 3: Urgente & No importante -->
+        <Frame Grid.Row="3" Grid.Column="1" BorderColor="Black" CornerRadius="0" Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{x:Static resx:AppResources.Delegate}" FontSize="Small" HorizontalOptions="Center"/>
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding UrgentButNotImportantTasks}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnTaskSelected"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,Auto" Padding="4">
+                                <Label Text="{Binding Title}" FontSize="Small" VerticalOptions="Center"/>
+                                <Button Grid.Column="1"
+                                        Text="-"
+                                        Margin="4,0"
+                                       Clicked="OnDeleteButtonClicked"
+                                        FontSize="Small"
+                                        WidthRequest="32"
+                                        HeightRequest="32"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+
+        <!-- Cuadrante 4: No urgente & No importante -->
+        <Frame Grid.Row="3" Grid.Column="2" BorderColor="Black" CornerRadius="0" Padding="8" Margin="0,0,16,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="{x:Static resx:AppResources.DiscardOrArchive}" FontSize="Small" HorizontalOptions="Center"/>
+                <CollectionView Grid.Row="1"
+                                ItemsSource="{Binding NeitherUrgentNorImportantTasks}"
+                                SelectionMode="Single"
+                                SelectionChanged="OnTaskSelected"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,40" Padding="4">
+                                <Label Text="{Binding Title}"
+           FontSize="Small"
+           VerticalOptions="Center"
+           HorizontalOptions="StartAndExpand"
+           LineBreakMode="TailTruncation"
+           MaxLines="1"/>
+                                <Button Grid.Column="1"
+            Text="-"
+            Margin="4,0"
+            Clicked="OnDeleteButtonClicked"
+            FontSize="Small"
+            WidthRequest="32"
+            HeightRequest="32"
+            HorizontalOptions="End"/>
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

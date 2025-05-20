@@ -42,8 +42,6 @@
                        VerticalOptions="Center"/>
                 <CheckBox x:Name="UrgentCheckBox"
                           VerticalOptions="Center"/>
-                <!--<Label Text="{x:Static resx:AppResources.UrgentText}"
-                       VerticalOptions="Center"/>-->
             </HorizontalStackLayout>
             <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
                 <Label Text="{x:Static resx:AppResources.ImportanceLabel}"
@@ -54,12 +52,11 @@
                           VerticalOptions="Center"/>
             </HorizontalStackLayout>
 
-            <!-- Botón Agregar alineado a la izquierda -->
+            <!-- Botón Agregar responsive -->
             <Button Text="{x:Static resx:AppResources.AddTaskButton}"
                     x:Name="AddTaskButton"
                     Clicked="AddTaskButton_Clicked"
-                    HorizontalOptions="Start"
-                    WidthRequest="180"
+                    HorizontalOptions="FillAndExpand"
                     HeightRequest="50"
                     FontAttributes="Bold"
                     Margin="0,30,0,0"/>
@@ -87,6 +84,18 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!-- Botón Distribuir tareas al final -->
+            <Button Text="{x:Static resx:AppResources.DistributeTasksButton}"
+                    x:Name="DistributeTasksButton"
+                    Clicked="DistributeTasksButton_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,10,0,10"
+                    FontAttributes="Bold"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    HeightRequest="50"
+                    IsEnabled="{Binding HasTasks}"/>
 
         </VerticalStackLayout>
     </ScrollView>

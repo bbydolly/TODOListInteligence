@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace TODOListInteligence.Models
 {
@@ -34,7 +36,21 @@ namespace TODOListInteligence.Models
         public Dictionary<AreaType, double> ImportancePercent { get; set; }
         public Dictionary<AreaType, double> UrgencyPercent { get; set; }
 
+        //tareas del usuario
         public List<UserTask> UserTasks { get; set; }
+
+
+        //colecciones para cada cuadrante.
+        //es una colección especial que notifica automáticamente a la interfaz de usuario cada vez que se agrega, elimina o cambia un elemento.
+        public ObservableCollection<UserTask> UrgentAndImportantTasks { get; set; } = new();    // Quadrant 1: Urgent & Important
+        public ObservableCollection<UserTask> ImportantButNotUrgentTasks { get; set; } = new(); // Quadrant 2: Important but Not Urgent
+        public ObservableCollection<UserTask> UrgentButNotImportantTasks { get; set; } = new(); // Quadrant 3: Urgent but Not Important
+        public ObservableCollection<UserTask> NeitherUrgentNorImportantTasks { get; set; } = new(); // Quadrant 4: Neither Urgent nor Important
+
+        //Diccionario que me agrupa por área todas las tareas para poder filtrarlas a futuro
+        public Dictionary<AreaType, List<UserTask>> TasksByArea { get; set; }
+
+        public ICommand DeleteTaskCommand { get; }
 
 
         // Constructor privado para singleton
@@ -52,6 +68,12 @@ namespace TODOListInteligence.Models
             ImportancePercent = new Dictionary<AreaType, double>();
             UrgencyPercent = new Dictionary<AreaType, double>();
             UserTasks = new List<UserTask>();
+            TasksByArea = new Dictionary<AreaType, List<UserTask>>();
+            foreach (AreaType area in Enum.GetValues(typeof(AreaType)))
+            {
+                TasksByArea[area] = new List<UserTask>();
+            }
+            DeleteTaskCommand = new Command<UserTask>(OnDeleteTask);
 
             InitDictionaries();
         }
@@ -85,6 +107,15 @@ namespace TODOListInteligence.Models
 
         public bool IsAreaUrgent(AreaType area, double threshold = 0.3)
             => UrgencyPercent.TryGetValue(area, out var val) && val >= threshold;
+
+
+        private void OnDeleteTask(UserTask task)
+        {
+            UrgentAndImportantTasks.Remove(task);
+            ImportantButNotUrgentTasks.Remove(task);
+            UrgentButNotImportantTasks.Remove(task);
+            NeitherUrgentNorImportantTasks.Remove(task);
+        }
     }
 
 }

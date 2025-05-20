@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using TODOListInteligence.Models;
+using TODOListInteligence.Services;
 
 namespace TODOListInteligence.Views;
 
@@ -39,6 +40,7 @@ public partial class AddTaskPage : ContentPage
         // Validación simple
         if (string.IsNullOrWhiteSpace(TaskNameEntry.Text))
         {
+            //TODO cambiarlo  amultiidioma
             DisplayAlert("Error", "Por favor, introduce el nombre de la tarea.", "OK");
             return;
         }
@@ -68,4 +70,19 @@ public partial class AddTaskPage : ContentPage
         TaskNameEntry.Focus();
     }
 
+    //Agrega tareas a la colección que le corresponde a partir del total de tareas que contiene Tasks
+    private async void DistributeTasksButton_Clicked(object sender, EventArgs e)
+    {
+        //llamar a detectArea
+
+
+
+        // 1. Llama al servicio para distribuir las tareas
+        var distributionService = new TaskDistributionService();
+        distributionService.DistributeTasksByAreaAndQuadrant(UserConfig.Instance);
+
+        // 2. Navega a la vista de cuadrantes o de áreas (por ejemplo, EisenhowerMatrixPage)
+        await Navigation.PushAsync(new EisenhowerMatrixPage());
+
+    }
 }

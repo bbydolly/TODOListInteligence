@@ -12,6 +12,7 @@ namespace TODOListInteligence.Models
         public string Description { get; set; }
         public bool IsUrgent { get; set; }
         public bool IsImportant { get; set; }
+        public bool IsDistributed { get; set; } = false;
 
         public UserTask()
         {
@@ -24,6 +25,7 @@ namespace TODOListInteligence.Models
             Description = description;
             this.IsUrgent = IsUrgent;
             this.IsImportant = IsImportant;
+            IsDistributed = false;
         }
     }
 

@@ -157,7 +157,7 @@ public partial class InitialQuestionnairePage : ContentPage
 
 
             // 1. Procesa el cuestionario y suma puntos por área
-            UserPreferenceService.ProcessQuestionnaire(
+            UserQuestionairePreferenceService.ProcessQuestionnaire(
                 UserConfig.Instance,
                 UserConfig.Instance.UserAnswers,
                 UserConfig.Instance.UserLanguage
