@@ -116,6 +116,13 @@ namespace TODOListInteligence.Models
             UrgentButNotImportantTasks.Remove(task);
             NeitherUrgentNorImportantTasks.Remove(task);
         }
+
+        //método para comprobar que el usuario ya está logueado (rudimentario) para cargar un menú u otro según el caso
+        public bool UserDataIsComplete()
+        {
+          
+            return !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email);
+        }
     }
 
 }

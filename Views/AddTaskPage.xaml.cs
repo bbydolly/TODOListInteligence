@@ -82,7 +82,9 @@ public partial class AddTaskPage : ContentPage
         distributionService.DistributeTasksByAreaAndQuadrant(UserConfig.Instance);
 
         // 2. Navega a la vista de cuadrantes o de áreas (por ejemplo, EisenhowerMatrixPage)
-        await Navigation.PushAsync(new EisenhowerMatrixPage());
+       // await Navigation.PushAsync(new EisenhowerMatrixPage());
+
+        Application.Current.MainPage = new AppShell();
 
     }
 }

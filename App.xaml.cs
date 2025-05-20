@@ -12,15 +12,15 @@ namespace TODOListInteligence
             //Cargo la primera vista al ejecutar mi programa
             MainPage = new AppShell();
 
-            //if (UserConfig.Instance.UserDataIsComplete()) // Implementa este método según tu lógica
-            //{
-            //    MainPage = new AppShell(); // Menú principal
-            //}
-            //else
-            //{
-            //        MainPage = new NavigationPage(new Views.WelcomePage());
+            if (UserConfig.Instance.UserDataIsComplete()) // Implementa este método según tu lógica
+            {
+                MainPage = new AppShell(); // Menú principal
+            }
+            else
+            {
+                    MainPage = new NavigationPage(new Views.WelcomePage());
                 
-            //}
+            }
         }
     }
 }

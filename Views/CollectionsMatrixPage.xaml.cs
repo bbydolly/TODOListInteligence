@@ -23,7 +23,8 @@ namespace TODOListInteligence.Views
         private async void OnAddButtonClicked(object sender, EventArgs e)
         {
             // Abre la vista para crear una nueva tarea (ajusta el nombre según tu vista)
-           // await Navigation.PushAsync(new UserTaskDetailPage(null, ItemsSource));
+           await Navigation.PushModalAsync(new AddTaskModalPage(ItemsSource)); //A ver si con modal se crga bien y no salta excepcion
+
         }
 
 
