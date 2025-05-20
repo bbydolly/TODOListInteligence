@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TODOListInteligence.Views.AddTaskModalPage"
+             xmlns:resx="clr-namespace:TODOListInteligence.Resources.Strings"
+             Title="AddTaskModalPage">
+    <VerticalStackLayout Padding="30" Spacing="20">
+
+        <!-- Título principal -->
+        <Label Text="{x:Static resx:AppResources.AddTaskTitle}" 
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!-- Nombre de la tarea -->
+        <Label Text="{x:Static resx:AppResources.TaskNameLabel}" 
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Start"/>
+        <Entry x:Name="TaskNameEntry"
+               Placeholder="{x:Static resx:AppResources.TaskNamePlaceholder}" 
+               HorizontalOptions="FillAndExpand"/>
+
+        <!-- Descripción de la tarea -->
+        <Label Text="{x:Static resx:AppResources.TaskDescriptionLabel}" 
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Start"/>
+        <Editor x:Name="TaskDescriptionEditor"
+                Placeholder="{x:Static resx:AppResources.TaskDescriptionPlaceholder}"
+                AutoSize="TextChanges"
+                HeightRequest="80"
+                HorizontalOptions="FillAndExpand"/>
+
+        <!-- Botones -->
+        <HorizontalStackLayout Spacing="16" HorizontalOptions="Center">
+            <Button Text="{x:Static resx:AppResources.SaveButtonText}" Clicked="OnSaveClicked" />
+            <Button Text="{x:Static resx:AppResources.CancelButtonText}" Clicked="OnCancelClicked" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

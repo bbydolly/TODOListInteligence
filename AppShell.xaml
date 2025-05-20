@@ -9,11 +9,7 @@
     Title="TODOListInteligence">
 
     <TabBar>
-        <Tab Title="Bienvenida" Icon="welcome.png">
-            <ShellContent
-                Title="Bienvenida"
-                ContentTemplate="{DataTemplate views:WelcomePage}" />
-        </Tab>
+        
         <Tab Title="Matriz" Icon="matrix.png">
             <ShellContent
                 Title="Eisenhower"
