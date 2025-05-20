@@ -17,7 +17,7 @@ namespace TODOListInteligence
             AppSettings.ApplyTheme();
             if (UserConfig.Instance.UserDataIsComplete())
             {
-                MainPage = new LoginPage(); // Menú principal
+                MainPage = new NavigationPage(new LoginPage()); // Menú principal
             }
             else
             {

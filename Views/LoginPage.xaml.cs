@@ -25,7 +25,7 @@ namespace TODOListInteligence.Views
 
             if (EmailEntry.Text == null || PasswordEntry.Text == null) { 
                 ErrorEntry.Text = "Email o contraseña incorrectos";
-
+                
                 return;
             };
 
