@@ -1004,6 +1004,7 @@ Se manejan correctamente los casos en los que el archivo no existe o los campos 
 
 ---
 
+
 #### 💡 Justificación
 
 **Problema original:**  
