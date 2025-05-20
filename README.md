@@ -419,10 +419,613 @@ Todo el código mencionado se encuentra en la rama **feature-heisenhower-matrix*
 - Se añadió la posibilidad de mostrar área y cuadrante en la lista de tareas.
 - Se documentó el flujo de clasificación automática y manual de tareas.
 
----
+--- 
 
 ### ¿Qué queda pendiente?
 - Mejorar la visualización de cuadrantes (por ejemplo, con colores o iconos).
 - Permitir edición y eliminación de tareas.
 - Mejorar la detección automática de área con IA o reglas más avanzadas (opcional).
 - Internacionalización completa de etiquetas si se añaden nuevos campos.
+
+
+
+
+# 🛠️ Informe Detallado de Cambios, Avances, Problemas y Soluciones
+
+**Fecha:** 20/5/2025 Última entrega
+
+---
+
+## 1. Nuevas vistas implementadas
+
+### 🔹 AddTaskModalPage
+
+**Propósito:**  
+Permitir al usuario crear una nueva tarea mediante un formulario modal, integrado con la colección observable de tareas y la persistencia de datos.
+
+---
+
+**Funcionalidad:**
+- Validación de campos obligatorios (título).
+- Entrada de descripción opcional.
+- Botón para guardar la tarea, que añade la tarea a la colección principal, guarda los datos y cierra el modal.
+- Botón para cancelar y cerrar el modal sin cambios.
+- Textos internacionalizados mediante recursos `.resx`.
+
+---
+
+**Code-behind (C#):**
+- Recibe una `ObservableCollection<UserTask>` por parámetro en el constructor y la almacena en `_collection` para añadir nuevas tareas directamente.
+
+**En `OnSaveClicked`:**
+- Valida que el campo de título no esté vacío.
+- Crea una nueva instancia de `UserTask` con los datos introducidos.
+- Añade la nueva tarea a la colección observable (lo que actualiza automáticamente la UI de la lista principal).
+- Llama a `UserConfigStorage.Save()` para persistir los datos.
+- Cierra el modal con `Navigation.PopModalAsync()`.
+
+**En `OnCancelClicked`:**
+- Cierra el modal sin realizar cambios.
+
+---
+
+**XAML:**
+- Interfaz sencilla y clara, con:
+  - Título principal.
+  - Campos para nombre y descripción de la tarea.
+  - Botones de guardar y cancelar.
+- Todos los textos están internacionalizados usando recursos `.resx`.
+
+---
+
+**Problemas encontrados:**
+- Dificultad para limpiar correctamente los campos tras guardar, ya que el modal se cierra y no se reutiliza.
+- Necesidad de refrescar la lista de tareas en la vista principal tras añadir una tarea, especialmente si la colección no es observable.
+- Gestión de la persistencia de datos tras añadir la tarea (asegurando que la tarea se guarda correctamente en almacenamiento local).
+
+---
+
+**Soluciones:**
+- Se utilizó una `ObservableCollection<UserTask>` compartida entre la página principal y el modal, lo que permite que la lista principal se actualice automáticamente al añadir una tarea.
+- Se invoca `UserConfigStorage.Save()` inmediatamente después de añadir la tarea para garantizar la persistencia.
+- Se optó por cerrar el modal tras guardar o cancelar, simplificando el flujo y evitando la necesidad de limpiar campos manualmente.
+
+---
+
+**📌 Resumen técnico:**
+- La implementación actual es eficiente y simple para el flujo de alta de tareas.
+- El uso de `ObservableCollection` garantiza la actualización automática de la UI.
+- La persistencia inmediata evita pérdidas de datos.
+- La internacionalización está correctamente aplicada en todos los textos de la vista.
+
+
+### 🔹 CollectionsMatrixPage
+
+**Propósito:**  
+Mostrar una lista de tareas clasificadas (por ejemplo, por cuadrante en la matriz de Eisenhower), permitiendo al usuario visualizar, crear y seleccionar tareas para su edición o eliminación.
+
+---
+
+**Funcionalidad:**
+- Visualización de la lista de tareas en un `CollectionView` con scroll.
+- Título dinámico de la colección, internacionalizable.
+- Botón fijo para añadir una nueva tarea, siempre visible en la parte inferior.
+- Selección de una tarea para acceder a su detalle y edición.
+- Soporte para internacionalización según el idioma del usuario.
+
+---
+
+**Code-behind (C#):**
+
+**Constructor:**
+- Recibe una `ObservableCollection<UserTask>` y un título, que se asignan a las propiedades `ItemsSource` y `CollectionTitle`, respectivamente.
+- Inicializa la cultura de la aplicación según la preferencia del usuario (`UserConfig.Instance.UserLanguage`).
+- Establece el `BindingContext` para la vista.
+
+**`OnAddButtonClicked`:**
+- Abre el modal `AddTaskModalPage`, pasando la colección observable para que la nueva tarea se añada y la lista se actualice automáticamente.
+
+**`OnTaskSelected`:**
+- Al seleccionar una tarea, abre la vista de detalle (`UserTaskDetailPage`), pasando la tarea seleccionada y la colección para permitir edición/eliminación.
+- Deselecciona el elemento tras la navegación para permitir futuras selecciones.
+
+---
+
+**XAML:**
+- Estructura con `Grid` y tres filas: título, lista de tareas y botón de añadir.
+- `CollectionView` para mostrar las tareas, cada una en un `ContentView` con estilo y margen.
+- Botón **"Añadir tarea"** siempre visible, alineado en la parte inferior.
+- Todos los textos preparados para internacionalización.
+
+---
+
+**Problemas encontrados:**
+
+- **Internacionalización:**  
+  Inicialmente, el título de la colección y los textos no se actualizaban correctamente al cambiar el idioma del usuario.
+
+- **Actualización de la lista:**  
+  Si la colección no es observable, la lista no se actualiza automáticamente al añadir o editar tareas.
+
+- **Selección múltiple:**  
+  Si no se deselecciona el elemento tras navegar, el usuario no puede volver a seleccionar la misma tarea hasta que seleccione otra.
+
+- **Gestión de la pila de navegación:**  
+  Al navegar a detalles y volver, la pila de navegación puede crecer si no se gestiona correctamente.
+
+---
+
+**Soluciones:**
+- Se utiliza `ObservableCollection<UserTask>` para asegurar que la UI se actualiza automáticamente al añadir, editar o eliminar tareas.
+- El título de la colección se obtiene y se internacionaliza usando recursos y la cultura del usuario, inicializada en el constructor.
+- Tras navegar a la vista de detalle, se deselecciona el elemento en el `CollectionView` para evitar problemas de selección.
+- Se recomienda (y se documenta como mejora futura) gestionar la pila de navegación usando rutas absolutas de Shell para evitar acumulación de páginas en la pila.
+- Se sugiere migrar a un patrón **MVVM** y usar notificaciones de cambio para una arquitectura más escalable y desacoplada.
+
+---
+
+**📌 Resumen técnico:**
+- La vista permite una gestión eficiente y
+
+
+---
+
+### 🔹 UserProfilePage
+
+**Propósito:**  
+Permitir al usuario visualizar sus datos personales y preferencias de configuración dentro de la aplicación.
+
+---
+
+**Funcionalidad:**
+- Muestra el nombre, email, idioma y tema actual del usuario.
+- Todos los datos se obtienen directamente de la instancia singleton `UserConfig`.
+- Botón para editar el perfil, preparado para navegar a una página de edición (a implementar o ampliar).
+- Interfaz adaptada para scroll vertical y diseño limpio con separación entre campos.
+
+---
+
+**Code-behind (C#):**
+
+- En el constructor, se establece el `BindingContext` a `UserConfig.Instance`, lo que permite enlazar directamente las propiedades del usuario a la UI.
+- El método `OnEditProfileClicked` está preparado para manejar la navegación a la página de edición de perfil (pendiente de implementación o ampliación según necesidades).
+
+---
+
+**XAML:**
+
+- Estructura basada en un `VerticalStackLayout` dentro de un `ScrollView` para asegurar desplazamiento en dispositivos móviles.
+- Cada campo (nombre, email, idioma, tema) se muestra con una etiqueta en negrita y el valor correspondiente enlazado por *binding*.
+- Botón **“Editar Perfil”** centrado y con margen superior para mejor usabilidad.
+
+---
+
+**Problemas encontrados:**
+
+- **Actualización de datos en tiempo real:**  
+  Si se modifica algún dato del usuario fuera de esta vista, los cambios no se reflejan automáticamente al volver, ya que `UserConfig` no implementa `INotifyPropertyChanged`.
+
+- **Edición de perfil:**  
+  La lógica para editar el perfil aún no está implementada; actualmente, el botón solo sirve como *placeholder*.
+
+- **Internacionalización:**  
+  Los textos de las etiquetas están actualmente en español fijo; sería recomendable internacionalizarlos usando recursos `.resx`.
+
+---
+
+**Soluciones:**
+
+- Se documentó la necesidad de implementar `INotifyPropertyChanged` en `UserConfig` para que la UI se actualice automáticamente cuando cambien los datos del usuario.
+- Se sugiere internacionalizar los textos estáticos de las etiquetas para soportar múltiples idiomas, siguiendo el estándar ya usado en otras vistas.
+
+---
+
+**📌 Resumen técnico:**
+
+- La vista proporciona una experiencia sencilla y directa para consultar los datos del usuario.
+- El uso del singleton como fuente de datos simplifica el *binding*, pero limita la actualización automática de la UI.
+- La estructura de la vista está preparada para ampliaciones futuras, tanto en campos como en lógica de edición.
+- Se identifican mejoras clave en notificación de cambios y soporte multilingüe.
+
+
+---
+
+### 🔹 UserTaskDetailPage
+
+**Propósito:**  
+Permitir al usuario consultar, editar o eliminar una tarea específica seleccionada desde la matriz o la lista principal de tareas.
+
+---
+
+**Funcionalidad:**
+- Muestra el título de la tarea en modo solo lectura.
+- Permite editar la descripción de la tarea.
+- Ofrece tres acciones principales: **guardar cambios**, **cancelar** y **eliminar** la tarea.
+- Todos los textos y etiquetas están internacionalizados mediante recursos `.resx`.
+- Interfaz adaptada para móviles, con scroll y botones dispuestos de forma *responsive*.
+
+---
+
+**Code-behind (C#):**
+
+- **Constructor:**
+  - Recibe la tarea seleccionada (`UserTask`) y la colección principal de tareas (`ObservableCollection<UserTask>`).
+  - Inicializa la cultura según el idioma del usuario.
+  - Asigna los datos de la tarea a las propiedades públicas `TaskTitle` y `TaskDescription` para el *binding*.
+  - Establece el `BindingContext` a la propia página.
+
+- **OnSaveClicked:**
+  - Si la tarea existe, actualiza la descripción con el nuevo texto introducido.
+  - Si la tarea no existe (caso poco habitual), crea una nueva tarea y la añade a la colección.
+  - Cierra la página y vuelve a la anterior.
+
+- **OnCancelClicked:**
+  - Descarta los cambios y vuelve a la página anterior.
+
+- **OnDeleteClicked:**
+  - Solicita confirmación al usuario antes de eliminar la tarea (*pendiente de internacionalizar el mensaje*).
+  - Si el usuario confirma, elimina la tarea de la colección principal y cierra la página.
+
+---
+
+**XAML:**
+
+- Estructura basada en un `VerticalStackLayout` dentro de un `ScrollView`.
+- Campo de **título** en modo solo lectura (`Entry` deshabilitado y en gris).
+- Campo de **descripción** editable (`Editor`).
+- Botones de **guardar**, **cancelar** y **eliminar** dispuestos en una sola fila (`Grid`), con colores diferenciados y esquinas redondeadas.
+- Todos los textos y *placeholders* están internacionalizados.
+
+---
+
+**Problemas encontrados:**
+
+- **Internacionalización incompleta:**  
+  El mensaje de confirmación de borrado aún está en español fijo y requiere traducción.
+
+- **Actualización de la UI:**  
+  Si la colección principal no es `ObservableCollection`, los cambios no se reflejan automáticamente en la vista principal.
+
+- **Edición de título:**  
+  Actualmente solo lectura. Para permitir su edición, sería necesario modificar la lógica y el binding.
+
+- **Gestión de navegación:**  
+  La pila de navegación puede crecer si no se controla el flujo al navegar repetidamente entre vistas.
+
+---
+
+**Soluciones:**
+
+- Se utiliza una `ObservableCollection<UserTask>` compartida para que los cambios se reflejen automáticamente en la UI principal.
+- Se documenta la necesidad de internacionalizar todos los mensajes, incluidos los de confirmación en diálogos.
+- El campo de título se mantiene como solo lectura para evitar ediciones accidentales. Si se requiere edición, se sugiere una vista específica.
+- Se recomienda gestionar la pila de navegación con rutas absolutas de `Shell` o un patrón de navegación más controlado.
+
+---
+
+**📌 Resumen técnico:**
+
+- La vista permite consultar, editar la descripción y eliminar tareas de forma segura y controlada.
+- El uso de `ObservableCollection` garantiza la actualización automática de la UI principal.
+- La experiencia de usuario es clara y los controles están bien diferenciados.
+- Se identifican mejoras clave en internacionalización y control de navegación para futuras versiones.
+
+---
+
+### 🔹 EisenhowerMatrixPage
+
+**Tipo de cambio:**  
+Modificación de vista existente (no es de nueva creación).
+
+**Propósito:**  
+Visualizar la matriz de Eisenhower, mostrando las tareas clasificadas en sus cuatro cuadrantes según **urgencia** e **importancia**, y permitir la navegación a las listas detalladas de cada cuadrante.
+
+---
+
+**Funcionalidad:**
+- Muestra los encabezados de “Urgente”, “No urgente”, “Importante” y “No importante” en la matriz.
+- Cada cuadrante es un `Frame` interactivo con un listado (`CollectionView`) de tareas correspondiente.
+- Permite al usuario pulsar en un cuadrante para navegar a una vista detallada de las tareas de ese cuadrante (`CollectionsMatrixPage`).
+- Permite seleccionar una tarea de un cuadrante para futuras acciones (edición, detalle, etc.).
+
+---
+
+**Code-behind (C#):**
+
+- Inicializa la cultura de la aplicación según la preferencia del usuario.
+- Establece el `BindingContext` a la instancia singleton de `UserConfig`, que contiene las colecciones observables de tareas para cada cuadrante.
+- `OnQuadrantTapped`: navega a la página de detalle de tareas del cuadrante seleccionado, pasando la colección y el título adecuados.
+- `OnTaskSelected`: preparado para futuras acciones al seleccionar una tarea (por ejemplo, mostrar detalles o editar).
+
+---
+
+**XAML:**
+
+- Usa un `Grid` complejo para estructurar la matriz de Eisenhower con filas y columnas bien definidas.
+- Cada cuadrante contiene un `CollectionView` para mostrar las tareas.
+- Diseño *responsive* y visualmente claro, con separación entre cuadrantes.
+- Encabezados internacionalizados.
+- Se había considerado incluir un botón de eliminación (“-”) junto a cada tarea, pero este código está comentado y **no se utiliza actualmente**.
+
+---
+
+**Problemas encontrados con los botones de eliminación:**
+
+- **Complejidad de layouts:**  
+  La estructura con múltiples `Grids`, `Frames` y `CollectionViews` hacía difícil añadir botones funcionales sin afectar la legibilidad del código y la estética.
+
+- **Gestión de eventos en CollectionView:**  
+  Añadir botones de acción dentro de cada elemento generaba problemas de alineación, espacio y manejo de eventos, especialmente en móviles y con textos largos.
+
+- **Ambigüedad en la interacción:**  
+  Múltiples acciones (selección, tap en cuadrante, eliminar) en un mismo elemento generaban confusión para el usuario.
+
+- **Duplicidad de lógica:**  
+  Gestionar la eliminación tanto desde la matriz como desde la vista de detalle podía provocar inconsistencias en el código.
+
+---
+
+**Soluciones y decisiones:**
+
+- **Eliminación de los botones de borrar tarea en la matriz:**  
+  Por motivos de complejidad visual y usabilidad, se eliminaron los botones de eliminación directa desde la matriz.
+
+- **Centralización de la eliminación en la vista de detalle:**  
+  La tarea se elimina únicamente desde `UserTaskDetailPage`, donde el flujo es más claro y controlado.
+
+- **Documentación de la decisión:**  
+  Se documenta en el código y diseño que no se incluyen botones de eliminar en la matriz por razones de mantenimiento y UX.
+
+- **Futuras mejoras sugeridas:**  
+  Si se desea reintroducir la funcionalidad, se recomienda utilizar `SwipeView` o menús contextuales en lugar de botones visibles permanentemente.
+
+---
+
+**📌 Resumen técnico:**
+
+- La matriz de Eisenhower está correctamente implementada y conectada con las `ObservableCollection`.
+- La navegación entre cuadrantes y sus vistas detalladas es fluida.
+- La eliminación de botones de borrado directo mejora la experiencia de usuario y la mantenibilidad.
+- El código está preparado para futuras mejoras, manteniendo la simplicidad visual como prioridad y se pretende corregir los errores al agregar tareas de alineación con los bordes del Frame..
+
+---
+### 🔹 UserConfigDTO
+
+**Tipo de cambio:**  
+Nueva clase de transferencia de datos (DTO) creada para resolver problemas de serialización con el singleton `UserConfig`.
+
+---
+
+**Propósito:**  
+Permitir la serialización y deserialización segura de la configuración y datos del usuario, evitando las restricciones y problemas asociados al patrón singleton implementado en la clase principal `UserConfig`.
+
+---
+
+**Funcionalidad y estructura:**
+
+**🔸 Datos personales:**
+- `Name`
+- `Email`
+- `Password`
+
+**🔸 Configuración de usuario:**
+- `UserLanguage` (idioma preferido)
+- `UserTheme` (tema claro/oscuro)
+
+**🔸 Respuestas del cuestionario:**
+- `List<UserAnswer> UserAnswers`
+
+**🔸 Palabras clave personalizadas por área:**
+- `Dictionary<AreaType, List<string>> AreaKeywords`
+
+**🔸 Puntuaciones y porcentajes por área:**
+- `Dictionary<AreaType, int> Importance`
+- `Dictionary<AreaType, int> Urgency`
+- `Dictionary<AreaType, double> ImportancePercent`
+- `Dictionary<AreaType, double> UrgencyPercent`
+
+**🔸 Tareas del usuario:**
+- `List<UserTask> UserTasks`
+
+**🔸 Colecciones observables por cuadrante de la matriz de Eisenhower:**
+- `ObservableCollection<UserTask> UrgentAndImportantTasks`
+- `ObservableCollection<UserTask> ImportantButNotUrgentTasks`
+- `ObservableCollection<UserTask> UrgentButNotImportantTasks`
+- `ObservableCollection<UserTask> NeitherUrgentNorImportantTasks`
+
+**🔸 Diccionario de tareas agrupadas por área:**
+- `Dictionary<AreaType, List<UserTask>> TasksByArea`
+
+---
+
+**Justificación y problemas resueltos:**
+
+- **❌ Imposibilidad de serializar un singleton:**  
+  `UserConfig` implementa el patrón singleton y contiene lógica interna, referencias a servicios y eventos que no deben serializarse.
+
+- **📦 Necesidad de persistencia y recuperación de datos:**  
+  Para guardar/restaurar la configuración del usuario, se requiere una estructura simple, plana y libre de lógica.
+
+- **🔄 Desacoplamiento de la lógica de negocio:**  
+  `UserConfigDTO` no contiene lógica ni dependencias externas. Solo representa datos, facilitando la serialización/deserialización.
+
+- **🔔 Compatibilidad con colecciones observables:**  
+  Se incluyen `ObservableCollection<UserTask>` para mantener la reactividad de la UI tras deserialización.
+
+---
+
+**Uso en el proyecto:**
+
+- **Guardar datos:**  
+  Se crea una instancia de `UserConfigDTO` a partir de `UserConfig` y se serializa a almacenamiento persistente.
+
+- **Cargar datos:**  
+  Se deserializa un `UserConfigDTO` y se utiliza para poblar `UserConfig`, restaurando el estado de la aplicación.
+
+---
+
+**Ventajas:**
+
+- ✅ Permite persistir/restaurar el estado del usuario sin romper el patrón singleton.
+- 🔧 Facilita la evolución del modelo de datos.
+- 🧼 Mejora la mantenibilidad
+
+---
+
+## 2. Creación y uso del menú principal (TabBar)
+
+**Implementación:**
+- Definido en `AppShell.xaml` usando el componente `TabBar` de Shell.
+- Pestañas: 
+  - **Matriz** (`EisenhowerMatrixPage`)
+  - **Añadir** (`AddTaskPage`)
+  - **Usuario** (`UserProfilePage`)
+
+**Ventajas:**
+- Navegación clara y accesible entre las áreas principales.
+- Experiencia de usuario nativa y consistente en todas las plataformas.
+
+**Problemas encontrados:**
+- Al navegar a subpáginas dentro de una pestaña, el `TabBar` nativo no permite limpiar la pila de navegación automáticamente al volver a pulsar la pestaña.
+- No existe el evento `CurrentItemChanged` en .NET MAUI, por lo que no se puede interceptar el cambio de pestaña para ejecutar lógica personalizada.
+- NO está solucionada la limpieza de la pila de llamadas en submenús.
+
+**Soluciones y alternativas:**
+- Uso de rutas absolutas (`Shell.Current.GoToAsync("//EisenhowerMatrixPage")`) en menús y botones personalizados.
+- Se documentó la alternativa de crear un `TabBar` personalizado con botones si se requiere lógica avanzada, aunque se decidió mantener el `TabBar` nativo por simplicidad y experiencia de usuario.
+
+---
+
+## 3. Modificaciones en clases y arquitectura
+
+### 🔹 `UserConfig`
+
+**Nuevo método `UserDataIsComplete`:**
+- Permite comprobar si el usuario está logueado y si su información es válida antes de acceder a funcionalidades sensibles.
+
+**Motivación:**
+- Mejorar la seguridad y la experiencia de usuario, evitando accesos no autorizados o flujos incompletos.
+
+---
+
+
+### 🔹 Otras mejoras
+
+- Refactorización del `code-behind` para separar lógica de UI y lógica de negocio.
+- Mejoras en la validación y gestión de errores en formularios.
+
+---
+
+## 4. Internacionalización y recursos
+
+**Implementación de archivos `.resx`:**
+- Todos los textos de la interfaz se gestionan mediante recursos para soportar múltiples idiomas.
+- Se inicializa la cultura en el arranque de la aplicación y se referencia desde XAML y *code-behind*.
+
+**Problemas encontrados:**
+- Dificultad inicial para vincular correctamente los recursos en XAML.
+
+**Soluciones:**
+- Uso de `{x:Static resx:AppResources.Clave}` y comprobación de la inicialización de la cultura en cada vista.
+
+---
+
+## 5. Problemas generales encontrados y soluciones
+
+### 🔸 Gestión de la pila de navegación en Shell
+
+**Problema:**  
+Al navegar a subpáginas y volver a la pestaña principal, la pila no se limpiaba automáticamente, lo que puede llevar a una experiencia de navegación confusa y a acumulación de páginas en la pila.
+
+**Solución (pendiente de implementación completa):**  
+Uso de rutas absolutas en la navegación desde menús y botones personalizados para forzar el retorno a la raíz de la pestaña (por ejemplo, `Shell.Current.GoToAsync("//EisenhowerMatrixPage")`).
+
+**Alternativa:**  
+Crear un **TabBar personalizado** si se requiere control total sobre la navegación y la pila, permitiendo interceptar los eventos de selección y ejecutar lógica personalizada.
+
+---
+
+### 🔸 Eventos de navegación en Shell
+
+**Problema:**  
+El evento `CurrentItemChanged` no está disponible en .NET MAUI Shell (a diferencia de Xamarin.Forms), lo que impide interceptar el cambio de pestaña en el TabBar nativo para ejecutar lógica personalizada, como limpiar la pila de navegación o recargar la página raíz.
+
+**Solución:**  
+Actualmente no existe una solución directa. Se recomienda:
+
+- Utilizar navegación explícita y rutas absolutas en las acciones que requieran garantizar la navegación a la raíz.
+- Documentar claramente esta limitación para el equipo de desarrollo y considerar la migración a un **TabBar personalizado** si la lógica de negocio lo requiere.
+
+---
+
+### 🔸 Carga condicional del menú principal
+
+**Problema:**  
+Dependiendo del contexto (por ejemplo, si el usuario es nuevo o está en proceso de *onboarding*), puede ser necesario ocultar o mostrar el menú principal (**TabBar**). La lógica actual permite esta carga condicional, pero requiere revisiones para garantizar que todos los flujos (registro, login, primer acceso) estén correctamente cubiertos.
+
+**Solución:**
+
+- Revisar y mejorar la lógica de carga condicional del menú en `AppShell` y en los controladores de navegación.
+- Asegurar que el menú solo se muestre cuando el usuario ha completado los pasos necesarios y que se oc
+
+
+### 🔹 Modificación de `UserConfigStorage` para persistencia de datos
+
+**Tipo de cambio:**  
+Modificación importante (no es una clase nueva, sino una mejora significativa de la lógica de persistencia).
+
+**Propósito:**  
+Permitir la persistencia y recuperación de todos los datos de usuario y configuración de la aplicación, resolviendo la imposibilidad de serializar directamente el singleton `UserConfig`.
+
+---
+
+#### 📌 Descripción de la modificación
+
+- Se ha implementado la lógica de guardado y carga de datos en la clase estática `UserConfigStorage`.
+- Al guardar, se crea un objeto `UserConfigDTO` a partir del singleton `UserConfig` y se serializa a un archivo JSON en el directorio de datos de la app.
+- Al cargar, se deserializa el archivo JSON a un objeto `UserConfigDTO` y se copian sus valores de vuelta al singleton `UserConfig`.
+- Se han implementado los métodos auxiliares `CopyFromSingleton` y `CopyToSingleton` para mapear todos los campos relevantes entre el singleton y el DTO.
+
+---
+
+#### ⚙️ Funcionamiento técnico
+
+**Ruta de almacenamiento:**  
+El archivo se guarda en `FileSystem.AppDataDirectory` bajo el nombre `userconfig.json`.
+
+**Serialización:**  
+Se utiliza `System.Text.Json` para serializar y deserializar el DTO de forma eficiente y legible.
+
+**Estructura de datos:**  
+Se incluyen todos los datos personales, preferencias, respuestas de cuestionario, palabras clave, puntuaciones y colecciones de tareas, tanto en listas como en colecciones observables para los cuadrantes de la matriz de Eisenhower.
+
+**Robustez:**  
+Se manejan correctamente los casos en los que el archivo no existe o los campos son nulos, creando colecciones vacías por defecto.
+
+---
+
+#### 💡 Justificación
+
+**Problema original:**  
+El patrón singleton de `UserConfig` impide la serialización directa, ya que la clase contiene lógica, referencias y eventos que no deben persistirse.
+
+**Solución:**  
+Se ha creado un DTO (`UserConfigDTO`) específicamente para la transferencia y persistencia de datos, y se ha adaptado `UserConfigStorage` para convertir entre ambos formatos.
+
+---
+
+#### ✅ Ventajas
+
+- Permite guardar y restaurar el estado completo del usuario de forma segura y eficiente.
+- Facilita la evolución futura del modelo de datos, ya que los cambios en la lógica de `UserConfig` no afectan a la estructura de serialización.
+- Mejora la mantenibilidad y claridad del código.
+
+---
+
+#### 📄 Resumen técnico
+
+- La persistencia de datos de usuario ahora es robusta y desacoplada de la lógica de negocio.
+- El flujo de guardado y carga es transparente para el usuario y se integra con el ciclo de vida de la aplicación.
+- Esta modificación es fundamental para asegurar la continuidad de los datos entre sesiones.
+
+
