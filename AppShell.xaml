@@ -5,26 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TODOListInteligence"
     xmlns:views="clr-namespace:TODOListInteligence.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Title="TODOListInteligence">
+    xmlns:strings="clr-namespace:TODOListInteligence.Resources.Strings"
+    Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        
-        <Tab Title="Matriz" Icon="matrix.png">
+
+        <Tab Title="{x:Static strings:AppResources.MatrixTitle}">
             <ShellContent
-                Title="Eisenhower"
                 ContentTemplate="{DataTemplate views:EisenhowerMatrixPage}"
                 Route="EisenhowerMatrixPage" />
         </Tab>
-        <Tab Title="Añadir" Icon="add.png">
+        <Tab Title="{x:Static strings:AppResources.AddTaskButton}">
             <ShellContent
-                Title="Añadir tarea"
                 ContentTemplate="{DataTemplate views:AddTaskPage}"
                 Route="AddTaskPage" />
         </Tab>
-        <Tab Title="Usuario" Icon="user.png">
+        <Tab Title="{x:Static strings:AppResources.UserTitle}">
             <ShellContent
-                Title="Usuario"
                 ContentTemplate="{DataTemplate views:UserProfilePage}"
                 Route="UserPage" />
         </Tab>

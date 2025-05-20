@@ -4,7 +4,7 @@
              xmlns:resx="clr-namespace:TODOListInteligence.Resources.Strings"
              x:Class="TODOListInteligence.Views.EisenhowerMatrixPage"
              x:Name="MatrixPageRef"
-             Title="EisenhowerMatrixPage">
+             >
 
     <Grid Padding="10" Margin="5" RowSpacing="8" ColumnSpacing="8">
         <!-- Definición de filas y columnas -->

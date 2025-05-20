@@ -29,6 +29,7 @@ namespace TODOListInteligence.Storage
             if (File.Exists(FilePath))
             {
                 var json = File.ReadAllText(FilePath);
+                if (json == null || json == "") return;
                 var loadedConfig = JsonSerializer.Deserialize<UserConfigDTO>(json);
                 if (loadedConfig != null)
                 {

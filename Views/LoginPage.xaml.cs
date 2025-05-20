@@ -1,6 +1,8 @@
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
+using TODOListInteligence.Helpers;
 using TODOListInteligence.Models;
+using TODOListInteligence.Resources.Strings;
 using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views
@@ -9,7 +11,10 @@ namespace TODOListInteligence.Views
     {
         public LoginPage()
         {
+            AppSettings.ApplyCulture();
+            AppSettings.ApplyTheme();
             InitializeComponent();
+
         }
 
        private async void OnCreateAccount(object sender, EventArgs e)
@@ -23,8 +28,9 @@ namespace TODOListInteligence.Views
             string email = UserConfig.Instance.Email;
             string password = UserConfig.Instance.Password;
 
-            if (EmailEntry.Text == null || PasswordEntry.Text == null) { 
-                ErrorEntry.Text = "Email o contraseña incorrectos";
+            if (string.IsNullOrEmpty(EmailEntry.Text) || string.IsNullOrEmpty(PasswordEntry.Text))
+            {   
+                ErrorEntry.Text = AppResources.WrongCredentials;
                 
                 return;
             };
@@ -36,7 +42,7 @@ namespace TODOListInteligence.Views
             }
             else
             {
-                ErrorEntry.Text = "Email o contraseña incorrectos";
+                ErrorEntry.Text = AppResources.WrongCredentials;
             }
         }
     }

@@ -97,6 +97,33 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Crear cuenta.
+        /// </summary>
+        internal static string ButtonCreateAccount {
+            get {
+                return ResourceManager.GetString("ButtonCreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Iniciar Sesión.
+        /// </summary>
+        internal static string ButtonLogin {
+            get {
+                return ResourceManager.GetString("ButtonLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Siguiente.
+        /// </summary>
+        internal static string ButtonNext {
+            get {
+                return ResourceManager.GetString("ButtonNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Empezar ahora.
         /// </summary>
         internal static string ButtonWelcomePage {
@@ -205,6 +232,33 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Inglés.
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre.
+        /// </summary>
+        internal static string EntryName {
+            get {
+                return ResourceManager.GetString("EntryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña.
+        /// </summary>
+        internal static string EntryPassword {
+            get {
+                return ResourceManager.GetString("EntryPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No se encontraron preguntas..
         /// </summary>
         internal static string ErrorNoQuestions {
@@ -241,11 +295,74 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ¿Ya tienes una cuenta?.
+        /// </summary>
+        internal static string LabelAlreadyAccount {
+            get {
+                return ResourceManager.GetString("LabelAlreadyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Oscuro.
+        /// </summary>
+        internal static string LabelDark {
+            get {
+                return ResourceManager.GetString("LabelDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Idioma.
+        /// </summary>
+        internal static string LabelLang {
+            get {
+                return ResourceManager.GetString("LabelLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Claro.
+        /// </summary>
+        internal static string LabelLight {
+            get {
+                return ResourceManager.GetString("LabelLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ¡Bienvenido!.
         /// </summary>
         internal static string LabelTextWelcome {
             get {
                 return ResourceManager.GetString("LabelTextWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tema.
+        /// </summary>
+        internal static string LabelTheme {
+            get {
+                return ResourceManager.GetString("LabelTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bienvenido de nuevo.
+        /// </summary>
+        internal static string LabelWelcomeBack {
+            get {
+                return ResourceManager.GetString("LabelWelcomeBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Matriz.
+        /// </summary>
+        internal static string MatrixTitle {
+            get {
+                return ResourceManager.GetString("MatrixTitle", resourceCulture);
             }
         }
         
@@ -295,6 +412,24 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Introduce tu email.
+        /// </summary>
+        internal static string PlaceholderSetEmail {
+            get {
+                return ResourceManager.GetString("PlaceholderSetEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Introduce tu nombre.
+        /// </summary>
+        internal static string PlaceholderSetName {
+            get {
+                return ResourceManager.GetString("PlaceholderSetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Planificar con exactitud y resolver.
         /// </summary>
         internal static string PlanAndResolve {
@@ -309,6 +444,15 @@ namespace TODOListInteligence.Resources.Strings {
         internal static string SaveButtonText {
             get {
                 return ResourceManager.GetString("SaveButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Español.
+        /// </summary>
+        internal static string Spanish {
+            get {
+                return ResourceManager.GetString("Spanish", resourceCulture);
             }
         }
         
@@ -408,6 +552,24 @@ namespace TODOListInteligence.Resources.Strings {
         internal static string UrgentText {
             get {
                 return ResourceManager.GetString("UrgentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuario.
+        /// </summary>
+        internal static string UserTitle {
+            get {
+                return ResourceManager.GetString("UserTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Email o contraseña incorrectos.
+        /// </summary>
+        internal static string WrongCredentials {
+            get {
+                return ResourceManager.GetString("WrongCredentials", resourceCulture);
             }
         }
     }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resx="clr-namespace:TODOListInteligence.Resources.Strings"
              x:Class="TODOListInteligence.Views.AddTaskPage"
-             BackgroundColor="White">
+            >
 
     <ScrollView>
         <VerticalStackLayout Padding="30" Spacing="20">
@@ -17,7 +17,7 @@
             <!-- Nombre de la tarea -->
             <Label Text="{x:Static resx:AppResources.TaskNameLabel}" 
                    FontAttributes="Bold"
-                   TextColor="Black"
+                   
                    HorizontalOptions="Start"/>
             <Entry x:Name="TaskNameEntry"
                    Placeholder="{x:Static resx:AppResources.TaskNamePlaceholder}" 
@@ -26,7 +26,7 @@
             <!-- Descripción de la tarea -->
             <Label Text="{x:Static resx:AppResources.TaskDescriptionLabel}" 
                    FontAttributes="Bold"
-                   TextColor="Black"
+                   
                    HorizontalOptions="Start"/>
             <Editor x:Name="TaskDescriptionEditor"
                     Placeholder="{x:Static resx:AppResources.TaskDescriptionPlaceholder}"
@@ -38,7 +38,7 @@
             <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
                 <Label Text="{x:Static resx:AppResources.UrgencyLabel}"
                        FontAttributes="Bold"
-                       TextColor="Black"
+                       
                        VerticalOptions="Center"/>
                 <CheckBox x:Name="UrgentCheckBox"
                           VerticalOptions="Center"/>
@@ -46,7 +46,7 @@
             <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
                 <Label Text="{x:Static resx:AppResources.ImportanceLabel}"
                        FontAttributes="Bold"
-                       TextColor="Black"
+                       
                        VerticalOptions="Center"/>
                 <CheckBox x:Name="ImportantCheckBox"
                           VerticalOptions="Center"/>

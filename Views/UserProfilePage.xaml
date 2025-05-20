@@ -1,37 +1,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODOListInteligence.Views.UserProfilePage"
-             Title="Editar Perfil">
+             xmlns:strings="clr-namespace:TODOListInteligence.Resources.Strings"
+             >
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="18">
 
             <!-- Nombre -->
-            <Label Text="Nombre:" FontAttributes="Bold"/>
-            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Introduce tu nombre"/>
+            <Label Text="{x:Static strings:AppResources.EntryName}" FontAttributes="Bold"/>
+            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="{x:Static strings:AppResources.PlaceholderSetName}"/>
 
             <!-- Email -->
             <Label Text="Email:" FontAttributes="Bold"/>
-            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Introduce tu email"/>
+            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="{x:Static strings:AppResources.PlaceholderSetEmail}"/>
 
             <!-- Idioma (RadioButtons, sin converter) -->
-            <Label Text="Idioma:" FontAttributes="Bold"/>
+            <Label Text="{x:Static strings:AppResources.LabelLang}" FontAttributes="Bold"/>
             <HorizontalStackLayout RadioButtonGroup.GroupName="Idioma"
                                    RadioButtonGroup.SelectedValue="{Binding UserLanguage, Mode=TwoWay}">
-                <RadioButton Content="Español" Value="es"/>
-                <RadioButton Content="Inglés" Value="en"/>
+                <RadioButton Content="{x:Static strings:AppResources.Spanish}" Value="es"/>
+                <RadioButton Content="{x:Static strings:AppResources.English}" Value="en"/>
             </HorizontalStackLayout>
 
             <!-- Tema (RadioButtons, sin converter) -->
-            <Label Text="Tema:" FontAttributes="Bold"/>
+            <Label Text="{x:Static strings:AppResources.LabelTheme}" FontAttributes="Bold"/>
             <HorizontalStackLayout RadioButtonGroup.GroupName="Tema"
                                    RadioButtonGroup.SelectedValue="{Binding UserTheme, Mode=TwoWay}">
-                <RadioButton Content="Claro" Value="light"/>
-                <RadioButton Content="Oscuro" Value="dark"/>
+                <RadioButton Content="{x:Static strings:AppResources.LabelLight}" Value="light"/>
+                <RadioButton Content="{x:Static strings:AppResources.LabelDark}" Value="dark"/>
             </HorizontalStackLayout>
 
             <!-- Botón para guardar cambios -->
-            <Button Text="Guardar Cambios"
+            <Button Text="{x:Static strings:AppResources.SaveButtonText}"
                     HorizontalOptions="Center"
                     Margin="0,30,0,0"
                     Clicked="OnSaveClicked"/>
