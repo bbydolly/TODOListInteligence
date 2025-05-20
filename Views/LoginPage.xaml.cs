@@ -22,10 +22,12 @@ namespace TODOListInteligence.Views
             UserConfigStorage.Load();
             string email = UserConfig.Instance.Email;
             string password = UserConfig.Instance.Password;
-            if (email == null || password == null)
-            {
+
+            if (EmailEntry.Text == null || PasswordEntry.Text == null) { 
+                ErrorEntry.Text = "Email o contraseña incorrectos";
+                
                 return;
-            }
+            };
 
             if (EmailEntry.Text.Equals(email) && PasswordEntry.Text.Equals(password))
             { 

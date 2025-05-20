@@ -1,4 +1,6 @@
-﻿using TODOListInteligence.Models;
+﻿using TODOListInteligence.Helpers;
+using TODOListInteligence.Models;
+using TODOListInteligence.Views;
 
 namespace TODOListInteligence
 {
@@ -11,14 +13,15 @@ namespace TODOListInteligence
             //MainPage = new AppShell();
             //Cargo la primera vista al ejecutar mi programa
             MainPage = new AppShell();
-
-            if (UserConfig.Instance.UserDataIsComplete()) // Implementa este método según tu lógica
+            AppSettings.ApplyCulture();
+            AppSettings.ApplyTheme();
+            if (UserConfig.Instance.UserDataIsComplete())
             {
-                MainPage = new AppShell(); // Menú principal
+                MainPage = new NavigationPage(new LoginPage()); // Menú principal
             }
             else
             {
-                    MainPage = new NavigationPage(new Views.WelcomePage());
+                MainPage = new NavigationPage(new Views.WelcomePage());
                 
             }
         }

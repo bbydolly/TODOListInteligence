@@ -1,4 +1,6 @@
+using TODOListInteligence.Helpers;
 using TODOListInteligence.Models;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views;
 
@@ -7,11 +9,20 @@ public partial class UserProfilePage : ContentPage
     public UserProfilePage()
     {
         InitializeComponent();
-        BindingContext = UserConfig.Instance; // Usando el singleton como fuente de datos
+        BindingContext = UserConfig.Instance; // Singleton como contexto de datos
     }
 
-    private void OnEditProfileClicked(object sender, EventArgs e)
+    private void OnSaveClicked(object sender, EventArgs e)
     {
-        // Lógica para navegar a la página de edición de perfil
+        Microsoft.Maui.Storage.Preferences.Set("UserLanguage", UserConfig.Instance.UserLanguage);
+
+        AppSettings.ApplyCulture();
+
+        Microsoft.Maui.Storage.Preferences.Set("UserTheme", UserConfig.Instance.UserTheme);
+
+        AppSettings.ApplyTheme();
+
+        UserConfigStorage.Save(); // Guarda los cambios en JSON o donde prefieras
+        DisplayAlert("Perfil", "¡Cambios guardados!", "OK");
     }
 }

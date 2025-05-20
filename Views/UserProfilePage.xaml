@@ -1,34 +1,40 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TODOListInteligence.Views.UserProfilePage"
-             Title="Perfil de Usuario">
+             Title="Editar Perfil">
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="18">
 
             <!-- Nombre -->
             <Label Text="Nombre:" FontAttributes="Bold"/>
-            <Label Text="{Binding Name}" FontSize="18"/>
+            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Introduce tu nombre"/>
 
             <!-- Email -->
             <Label Text="Email:" FontAttributes="Bold"/>
-            <Label Text="{Binding Email}" FontSize="18"/>
+            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Introduce tu email"/>
 
-            <!-- Idioma -->
+            <!-- Idioma (RadioButtons, sin converter) -->
             <Label Text="Idioma:" FontAttributes="Bold"/>
-            <Label Text="{Binding UserLanguage}" FontSize="18"/>
+            <HorizontalStackLayout RadioButtonGroup.GroupName="Idioma"
+                                   RadioButtonGroup.SelectedValue="{Binding UserLanguage, Mode=TwoWay}">
+                <RadioButton Content="Español" Value="es"/>
+                <RadioButton Content="Inglés" Value="en"/>
+            </HorizontalStackLayout>
 
-            <!-- Tema -->
+            <!-- Tema (RadioButtons, sin converter) -->
             <Label Text="Tema:" FontAttributes="Bold"/>
-            <Label Text="{Binding UserTheme}" FontSize="18"/>
+            <HorizontalStackLayout RadioButtonGroup.GroupName="Tema"
+                                   RadioButtonGroup.SelectedValue="{Binding UserTheme, Mode=TwoWay}">
+                <RadioButton Content="Claro" Value="light"/>
+                <RadioButton Content="Oscuro" Value="dark"/>
+            </HorizontalStackLayout>
 
-            <!-- Puedes añadir más campos según tu modelo -->
-
-            <!-- Botón para editar perfil (opcional) -->
-            <Button Text="Editar Perfil"
+            <!-- Botón para guardar cambios -->
+            <Button Text="Guardar Cambios"
                     HorizontalOptions="Center"
                     Margin="0,30,0,0"
-                    Clicked="OnEditProfileClicked"/>
+                    Clicked="OnSaveClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

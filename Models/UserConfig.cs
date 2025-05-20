@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Models
 {
@@ -121,7 +122,7 @@ namespace TODOListInteligence.Models
         //método para comprobar que el usuario ya está logueado (rudimentario) para cargar un menú u otro según el caso
         public bool UserDataIsComplete()
         {
-          
+            UserConfigStorage.Load();
             return !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Email);
         }
     }
