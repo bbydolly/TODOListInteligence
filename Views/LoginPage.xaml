@@ -19,7 +19,12 @@
                 Text="Bienvenido de nuevo"
                 FontSize="24"
                 HorizontalOptions="Center" />
-
+            <Label
+                Text=""
+                x:Name="ErrorEntry"
+                TextColor="Red"
+                FontSize="12"
+                HorizontalOptions="Center" />
             <Entry
                 Placeholder="Email"
                 Keyboard="Email"

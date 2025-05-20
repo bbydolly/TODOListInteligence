@@ -1,5 +1,6 @@
 using TODOListInteligence.Helpers;
 using TODOListInteligence.Models;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views;
 
@@ -34,6 +35,7 @@ public partial class ThemeConfigurationPage : ContentPage
             else
                 Application.Current.UserAppTheme = AppTheme.Light;
 
+            UserConfigStorage.Save();
             await Navigation.PushAsync(new LenguageConfigurationPage());
         }
     

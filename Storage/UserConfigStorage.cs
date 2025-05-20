@@ -5,6 +5,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TODOListInteligence.Models;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace TODOListInteligence.Storage
@@ -16,8 +18,10 @@ namespace TODOListInteligence.Storage
 
         public static void Save()
         {
-            var json = JsonSerializer.Serialize(UserConfig.Instance, new JsonSerializerOptions { WriteIndented = true });
+            var dto = CopyFromSingleton();
+            var json = JsonSerializer.Serialize(dto, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(FilePath, json);
+            Debug.WriteLine(FilePath);
         }
 
         public static void Load()
@@ -25,7 +29,7 @@ namespace TODOListInteligence.Storage
             if (File.Exists(FilePath))
             {
                 var json = File.ReadAllText(FilePath);
-                var loadedConfig = JsonSerializer.Deserialize<UserConfig>(json);
+                var loadedConfig = JsonSerializer.Deserialize<UserConfigDTO>(json);
                 if (loadedConfig != null)
                 {
                     // Copia los datos cargados al singleton
@@ -34,7 +38,7 @@ namespace TODOListInteligence.Storage
             }
         }
 
-        private static void CopyToSingleton(UserConfig loaded)
+        private static void CopyToSingleton(UserConfigDTO loaded)
         {
             var singleton = UserConfig.Instance;
             singleton.Name = loaded.Name;
@@ -48,6 +52,39 @@ namespace TODOListInteligence.Storage
             singleton.Urgency = loaded.Urgency ?? new Dictionary<AreaType, int>();
             singleton.ImportancePercent = loaded.ImportancePercent ?? new Dictionary<AreaType, double>();
             singleton.UrgencyPercent = loaded.UrgencyPercent ?? new Dictionary<AreaType, double>();
+            singleton.UserTasks = loaded.UserTasks ?? new List<UserTask> { };
+            singleton.UrgentAndImportantTasks = loaded.UrgentAndImportantTasks
+                ?? new ObservableCollection<UserTask>();
+            singleton.ImportantButNotUrgentTasks = loaded.ImportantButNotUrgentTasks ?? new ObservableCollection<UserTask>();
+            singleton.UrgentButNotImportantTasks = loaded.UrgentButNotImportantTasks ?? new ObservableCollection<UserTask>();
+            singleton.NeitherUrgentNorImportantTasks = loaded.NeitherUrgentNorImportantTasks ?? new ObservableCollection<UserTask>();
+        }
+
+        private static UserConfigDTO CopyFromSingleton()
+        {
+            var instance = UserConfig.Instance;
+            UserConfigDTO dto = new UserConfigDTO();
+
+            if (instance == null) return dto;
+
+            dto.Name = instance.Name;
+            dto.Email = instance.Email;
+            dto.Password = instance.Password;
+            dto.UserLanguage = instance.UserLanguage;
+            dto.UserTheme = instance.UserTheme;
+            dto.UserAnswers = instance.UserAnswers;
+            dto.AreaKeywords = instance.AreaKeywords;
+            dto.Importance = instance.Importance;
+            dto.Urgency = instance.Urgency;
+            dto.ImportancePercent = instance.ImportancePercent;
+            dto.UrgencyPercent = instance.UrgencyPercent;
+            dto.UserTasks = instance.UserTasks;
+            dto.UrgentAndImportantTasks = instance.UrgentAndImportantTasks;
+            dto.ImportantButNotUrgentTasks = instance.ImportantButNotUrgentTasks;
+            dto.UrgentButNotImportantTasks = instance.UrgentButNotImportantTasks;
+            dto.NeitherUrgentNorImportantTasks = instance.NeitherUrgentNorImportantTasks;
+
+            return dto;
         }
     }
 }

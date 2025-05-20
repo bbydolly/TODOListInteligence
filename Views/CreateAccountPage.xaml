@@ -14,19 +14,22 @@
         HorizontalOptions="Center"
         Spacing="20">
         <Entry
+            x:Name="Name"
             Placeholder="Nombre"
             HorizontalOptions="Center"
             WidthRequest="250"/>
 
         <Entry
+            x:Name="Email"
             Placeholder="Email"
             Keyboard="Email"
             HorizontalOptions="Center"
             WidthRequest="250"/>
 
         <Entry
+            x:Name="Password"
             Placeholder="Contraseña"
-           IsPassword="True"
+            IsPassword="True"
             HorizontalOptions="Center"
             WidthRequest="250"/>    
 

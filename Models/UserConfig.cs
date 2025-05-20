@@ -15,6 +15,7 @@ namespace TODOListInteligence.Models
         private static readonly Lazy<UserConfig> lazyInstance = new(() => new UserConfig());
         public static UserConfig Instance => lazyInstance.Value;
 
+
         // Datos personales
         public string Name { get; set; }
         public string Email { get; set; }

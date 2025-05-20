@@ -1,4 +1,5 @@
 using TODOListInteligence.Models;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views;
 
@@ -25,6 +26,7 @@ public partial class LenguageConfigurationPage : ContentPage
         {
             UserConfig.Instance.UserLanguage = selectedLang;
             Microsoft.Maui.Storage.Preferences.Set("UserLanguage", selectedLang);
+            UserConfigStorage.Save();
             await Navigation.PushAsync(new InitialQuestionnairePage());
         }
     }

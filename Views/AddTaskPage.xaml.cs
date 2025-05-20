@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using TODOListInteligence.Models;
 using TODOListInteligence.Services;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views;
 
@@ -59,7 +60,7 @@ public partial class AddTaskPage : ContentPage
 
         // Añadir a la lista global de UserConfig
         UserConfig.Instance.UserTasks.Add(newTask);
-
+        UserConfigStorage.Save();
         // Limpiar campos para la siguiente tarea
         TaskNameEntry.Text = "";
         TaskDescriptionEditor.Text = "";
