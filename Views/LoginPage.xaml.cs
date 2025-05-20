@@ -29,7 +29,8 @@ namespace TODOListInteligence.Views
 
             if (EmailEntry.Text.Equals(email) && PasswordEntry.Text.Equals(password))
             { 
-                await Navigation.PushAsync(new AddTaskPage());
+
+                await Navigation.PushAsync(UserConfig.Instance.UserTasks.Count() == 0 ? new AddTaskPage() : new AppShell());
             }
             else
             {

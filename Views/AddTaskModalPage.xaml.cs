@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using TODOListInteligence.Models;
+using TODOListInteligence.Storage;
 
 namespace TODOListInteligence.Views
 {
@@ -28,7 +29,7 @@ namespace TODOListInteligence.Views
             };
 
             _collection.Add(newTask);
-
+            UserConfigStorage.Save();
             await Navigation.PopModalAsync();
         }
 

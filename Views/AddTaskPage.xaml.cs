@@ -81,7 +81,7 @@ public partial class AddTaskPage : ContentPage
         // 1. Llama al servicio para distribuir las tareas
         var distributionService = new TaskDistributionService();
         distributionService.DistributeTasksByAreaAndQuadrant(UserConfig.Instance);
-
+        UserConfigStorage.Save();
         // 2. Navega a la vista de cuadrantes o de áreas (por ejemplo, EisenhowerMatrixPage)
        // await Navigation.PushAsync(new EisenhowerMatrixPage());
 
