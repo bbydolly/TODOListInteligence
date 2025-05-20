@@ -79,6 +79,15 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Añadir tarea.
+        /// </summary>
+        internal static string AddTaskButtonText {
+            get {
+                return ResourceManager.GetString("AddTaskButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Agregar tarea.
         /// </summary>
         internal static string AddTaskTitle {
@@ -97,11 +106,74 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cancelar.
+        /// </summary>
+        internal static string CancelButtonText {
+            get {
+                return ResourceManager.GetString("CancelButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tareas.
+        /// </summary>
+        internal static string CollectionsMatrixPageTitle {
+            get {
+                return ResourceManager.GetString("CollectionsMatrixPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Delegar.
         /// </summary>
         internal static string Delegate {
             get {
                 return ResourceManager.GetString("Delegate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Eliminar.
+        /// </summary>
+        internal static string DeleteButtonText {
+            get {
+                return ResourceManager.GetString("DeleteButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Seguro que quieres eliminar esta tarea?.
+        /// </summary>
+        internal static string DeleteConfirmMessage {
+            get {
+                return ResourceManager.GetString("DeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        internal static string DeleteConfirmNo {
+            get {
+                return ResourceManager.GetString("DeleteConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmar.
+        /// </summary>
+        internal static string DeleteConfirmTitle {
+            get {
+                return ResourceManager.GetString("DeleteConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sí.
+        /// </summary>
+        internal static string DeleteConfirmYes {
+            get {
+                return ResourceManager.GetString("DeleteConfirmYes", resourceCulture);
             }
         }
         
@@ -187,6 +259,15 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No hay tareas en esta colección..
+        /// </summary>
+        internal static string NoTasksText {
+            get {
+                return ResourceManager.GetString("NoTasksText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No importante.
         /// </summary>
         internal static string NotImportant {
@@ -223,6 +304,15 @@ namespace TODOListInteligence.Resources.Strings {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Guardar.
+        /// </summary>
+        internal static string SaveButtonText {
+            get {
+                return ResourceManager.GetString("SaveButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Descripción.
         /// </summary>
         internal static string TaskDescriptionLabel {
@@ -237,6 +327,51 @@ namespace TODOListInteligence.Resources.Strings {
         internal static string TaskDescriptionPlaceholder {
             get {
                 return ResourceManager.GetString("TaskDescriptionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalle de la tarea.
+        /// </summary>
+        internal static string TaskDetailTitle {
+            get {
+                return ResourceManager.GetString("TaskDetailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Importantes pero No Urgentes.
+        /// </summary>
+        internal static string TaskListTitle_ImportantButNotUrgent {
+            get {
+                return ResourceManager.GetString("TaskListTitle_ImportantButNotUrgent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ni Urgentes ni Importantes.
+        /// </summary>
+        internal static string TaskListTitle_NeitherUrgentNorImportant {
+            get {
+                return ResourceManager.GetString("TaskListTitle_NeitherUrgentNorImportant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Urgentes e importantes.
+        /// </summary>
+        internal static string TaskListTitle_UrgentAndImportant {
+            get {
+                return ResourceManager.GetString("TaskListTitle_UrgentAndImportant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Urgentes pero No Importantes.
+        /// </summary>
+        internal static string TaskListTitle_UrgentButNotImportant {
+            get {
+                return ResourceManager.GetString("TaskListTitle_UrgentButNotImportant", resourceCulture);
             }
         }
         

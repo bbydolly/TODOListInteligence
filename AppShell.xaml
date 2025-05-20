@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="TODOListInteligence.AppShell"
+   x:Class="TODOListInteligence.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TODOListInteligence"
+    xmlns:views="clr-namespace:TODOListInteligence.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="TODOListInteligence">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Bienvenida" Icon="welcome.png">
+            <ShellContent
+                Title="Bienvenida"
+                ContentTemplate="{DataTemplate views:WelcomePage}" />
+        </Tab>
+        <Tab Title="Matriz" Icon="matrix.png">
+            <ShellContent
+                Title="Eisenhower"
+                ContentTemplate="{DataTemplate views:EisenhowerMatrixPage}"
+                Route="EisenhowerMatrixPage" />
+        </Tab>
+        <Tab Title="Añadir" Icon="add.png">
+            <ShellContent
+                Title="Añadir tarea"
+                ContentTemplate="{DataTemplate views:AddTaskPage}"
+                Route="AddTaskPage" />
+        </Tab>
+        <Tab Title="Usuario" Icon="user.png">
+            <ShellContent
+                Title="Usuario"
+                ContentTemplate="{DataTemplate views:UserProfilePage}"
+                Route="UserPage" />
+        </Tab>
+    </TabBar>
 
 </Shell>

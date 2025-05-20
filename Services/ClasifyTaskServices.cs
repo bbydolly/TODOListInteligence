@@ -11,10 +11,10 @@ namespace TODOListInteligence.Config
     public static class ClasifyTaskServices
     {
 
-        public static string ClassifyTask(UserConfig user, string taskDescription)
+        public static string ClassifyTask(UserConfig user, string taskTitle)
         {
             // 1. Detecta el área de la tarea
-            AreaType? area = AppConfig.Instance.DetectArea(taskDescription);
+            AreaType? area = AppConfig.Instance.DetectArea(taskTitle);
             if (area == null)
                 return "No clasificada (no se detectó área)";
 

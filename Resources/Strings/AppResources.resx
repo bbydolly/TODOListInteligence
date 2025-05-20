@@ -189,4 +189,49 @@
   <data name="DiscardOrArchive" xml:space="preserve">
     <value>Desechar o archivar</value>
   </data>
+  <data name="CollectionsMatrixPageTitle" xml:space="preserve">
+    <value>Tareas</value>
+  </data>
+  <data name="AddTaskButtonText" xml:space="preserve">
+    <value>Añadir tarea</value>
+  </data>
+  <data name="NoTasksText" xml:space="preserve">
+    <value>No hay tareas en esta colección.</value>
+  </data>
+  <data name="TaskListTitle_UrgentAndImportant" xml:space="preserve">
+    <value>Urgentes e importantes</value>
+  </data>
+  <data name="TaskListTitle_ImportantButNotUrgent" xml:space="preserve">
+    <value>Importantes pero No Urgentes</value>
+  </data>
+  <data name="TaskListTitle_UrgentButNotImportant" xml:space="preserve">
+    <value>Urgentes pero No Importantes</value>
+  </data>
+  <data name="TaskListTitle_NeitherUrgentNorImportant" xml:space="preserve">
+    <value>Ni Urgentes ni Importantes</value>
+  </data>
+  <data name="TaskDetailTitle" xml:space="preserve">
+    <value>Detalle de la tarea</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="DeleteButtonText" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="DeleteConfirmTitle" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>¿Seguro que quieres eliminar esta tarea?</value>
+  </data>
+  <data name="DeleteConfirmYes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="DeleteConfirmNo" xml:space="preserve">
+    <value>No</value>
+  </data>
 </root>
